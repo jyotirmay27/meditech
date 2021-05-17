@@ -1,0 +1,32 @@
+body{
+    background-color: rgb(255, 255, 255);
+}
+.form-signin {
+    width: 100%;
+    max-width: 450px;
+    padding: 15px;
+    margin: auto;
+    align-items: center;
+  }
+.cont{
+    background-color: rgb(231, 231, 255);
+  
+    border-radius: 2%;
+    width: 40vw;
+    margin: auto;
+    margin-top: 3vw;
+}
+.heading{
+    color:rgb(0, 0, 0);
+    text-align: center;
+}
+.button1{
+    width: 100%;
+}
+@media screen and (max-width:768px) {
+    .cont{
+
+        margin-top: 5vw;
+        width: 65vw;
+    }
+}
