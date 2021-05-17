@@ -1,10 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const HttpError = require('./HttpError');
-const app = express();
+
 
 const usersRoutes = require('./routes/userRoutes');
 const doctorRoutes = require('./routes/doctorRoutes');
+const placesRoutes=require('./routes/placesRoutes');
+
+
+const app = express();
+
 app.use(bodyParser.json());
 
 /*app.use((req,res,next)=>{
@@ -40,4 +46,12 @@ app.use((error,req,res,next)=> {
 
 });
 
-app.listen(5000);
+mongoose
+.connect('mongodb+srv://jyotirmay:jyotirmay27@cluster0.8su5b.mongodb.net/meditech?retryWrites=true&w=majority')
+.then(()=> {
+    app.listen(5000);
+})
+.catch(err => {
+console.log(err);
+});
+
