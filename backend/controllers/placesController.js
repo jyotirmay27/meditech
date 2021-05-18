@@ -183,7 +183,7 @@ const getVitalbyId = async(req,res,next) =>{
 
         let vital;
         try {
-            vital = await Vital.findById(creator);
+            vital = await User.find({email : creator});
         } catch (err) {
           const error = new HttpError(
             'Creating place failed, please try again.',
