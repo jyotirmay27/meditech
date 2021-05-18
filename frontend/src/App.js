@@ -9,20 +9,22 @@ import Login from './users/pages/Login';
 import {Hello} from './users/pages/prescriptiondisplay';
 import MainNavigation from './shared/components/navigation/MainNavigation';
 import { AuthContext } from './shared/util/AuthContext';
+import { DocContext } from './shared/util/DocContext';
+import InputingPers from './doctors/addprescription';
 
 
 function App() {
 const [isLoggedIn, setIsLoggedIn] = useState (false);
+const [userId, setUserId] = useState (false);
 
-
-const login = useCallback (()=> {
+const login = useCallback (uid=> {
   setIsLoggedIn (true);
- 
+  setUserId(uid);
 },[]);
 
 const logout = useCallback (()=> {
   setIsLoggedIn (false);
-
+  setUserId(null);
 },[]);
 
 
@@ -30,12 +32,13 @@ let routes;
 if (isLoggedIn) {
   routes = (
     <Switch>
-    <Route path="/" exact>
+    <Route path="/home" exact>
       <Profile />
     </Route>
     <Route path="/vitals" exact>
       <Vitals />
     </Route>
+
  
     <Route path="/signup" exact>
       <Signup />
@@ -43,7 +46,7 @@ if (isLoggedIn) {
     <Route path="/prescriptions" exact>
       <Hello />
     </Route>
-    <Redirect to="/" />
+    <Redirect to="/home" />
 
   </Switch>
   );
@@ -51,20 +54,14 @@ if (isLoggedIn) {
 else{
   routes =(
     <Switch>
-    <Route path="/" exact>
-      <Profile />
-    </Route>
     <Route path="/login" exact>
-      <Login />
+      <Profile />
     </Route>
     <Route path="/signup" exact>
       <Signup />
     </Route>
-    <Route path="/prescriptions" exact>
-      <Hello />
-    </Route>
 
-   <Redirect to="/" />
+   <Redirect to="/login" />
    </Switch>
   );
 }
@@ -72,7 +69,7 @@ else{
 
   return (
     <AuthContext.Provider 
-    value= {{ isLoggedIn:isLoggedIn, login : login , logout : logout}}
+    value= {{ isLoggedIn:isLoggedIn, userId: userId, login : login , logout : logout}}
     >
     <Router>
     <MainNavigation />

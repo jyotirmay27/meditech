@@ -8,7 +8,7 @@ const vitalsSchema = new Schema({
     BP: { type: String , required: true },
     pulse:{ type: String , required: true },
     date:{ type: String , required: true },
-    creator:{ type: mongoose.Types.ObjectId , required: true, ref: 'User'}
+    creator:{ type: String , required: true }
 
     
     

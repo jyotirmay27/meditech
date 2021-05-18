@@ -25,26 +25,12 @@ const getAllVitals = async(req,res,next) =>{
   };
 
   const getAllMedicines = async(req,res,next) => {
-    const userId=req.params.uid;
-    let emailId;
-    try {
-        emailId = await User.findById(userId)
-        
-    } catch (err) {
-        const error = new HttpError(
-            'Fetching user failed, please try again later',
-            500
-          );
-    }
-    if (!emailId ) {
-        const error = new HttpError(
-          'Invalid Email ID.',
-          401
-        );
-    }
+    const emailId=req.params.uid;
+    
+
     let allmeds;
     try {
-        allmeds = await Medication.find({ patient: emailId.email});
+        allmeds = await Medication.find({ patient: emailId});
     } catch (err) {
       const error = new HttpError(
         'Fetching users failed, please try again later.',
@@ -61,27 +47,37 @@ const getAllVitals = async(req,res,next) =>{
   
   };
 
+ 
+    
+ const getAllAllergy = async(req,res,next) => {
+    const emailId=req.params.uid;
+
+  let allergy;
+  try {
+    allergy = await Allergy.find({ patient: emailId});
+  } catch (err) {
+    const error = new HttpError(
+      'Fetching users failed, please try again later.',
+      500
+    );
+    return next(error);
+  }
+  if (!allergy ) {
+      return next(
+        new HttpError('Could not find places for the provided user id.', 404)
+      );
+    }
+  res.json({Allergy: allergy.map(all => all.toObject({ getters: true }))});
+
+};
+
   const getAllPrescriptions = async(req,res,next) =>{
-    const userId=req.params.uid;
-    let emailId;
-    try {
-        emailId = await User.findById(userId)
-        
-    } catch (err) {
-        const error = new HttpError(
-            'Fetching user failed, please try again later',
-            500
-          );
-    }
-    if (!emailId ) {
-        const error = new HttpError(
-          'Invalid Email ID.',
-          401
-        );
-    }
+    const emailId=req.params.uid;
+   
+
     let allpres;
     try {
-        allpres = await Prescription.find({ patient: emailId.email});
+        allpres = await Prescription.find({ patient: emailId});
     } catch (err) {
       const error = new HttpError(
         'Fetching users failed, please try again later.',
@@ -158,7 +154,7 @@ const getVitalbyId = async(req,res,next) =>{
           );
         }
       
-        res.json({ prescription: pres.toObject({ getters: true }) });
+        res.json({ prescription: med.toObject({ getters: true }) });
       };
   
 
@@ -170,9 +166,9 @@ const getVitalbyId = async(req,res,next) =>{
           );
         }
 
-        const { sugar,BP,pulse,date} = req.body;
+        const { sugar,BP,pulse,date,creator} = req.body;
 
-        const createVitals =new Vital({
+        const createdVitals =new Vital({
     
             sugar,
             BP,
@@ -181,9 +177,9 @@ const getVitalbyId = async(req,res,next) =>{
             creator 
         });
 
-        let vital;
+        let user;
         try {
-            vital = await User.find({email : creator});
+            user = await User.find({email : creator});
         } catch (err) {
           const error = new HttpError(
             'Creating place failed, please try again.',
@@ -192,17 +188,19 @@ const getVitalbyId = async(req,res,next) =>{
           return next(error);
         }
       
-        if (!vital) {
+        if (!user) {
           const error = new HttpError('Could not find user for provided id.', 404);
           return next(error);
         }
-      
-        console.log(vital);
+        console.log(createdVitals);
+        console.log(user);
       
         try {
-          const sess = await mongoose.startSession();
-          sess.startTransaction();
-          await createVitals.save({ session: sess }); 
+            
+            const sess = await mongoose.startSession();
+            sess.startTransaction();
+          await createdVitals.save({ session: sess }); 
+        
           await sess.commitTransaction();
         } catch (err) {
           const error = new HttpError(
@@ -211,37 +209,37 @@ const getVitalbyId = async(req,res,next) =>{
           );
           return next(error);
         }
-        res.status(201).json({ vital: createVitals });
+        res.status(201).json({ vital: createdVitals });
     };
 
     const createPrescription = async (req,res,next) =>{
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return next(
-              new HttpError('Invalid inputs passed, please check your data.', 422)
-            );
-          }
-          const { age, name,date , meds,doctor,patient } = req.body;
+        
+ 
+          const { age, patname,date , hospitalname,note,doze,meds,docID,patID } = req.body;
           const createPrescriptions= new Prescription({
          
-              age,
-              name,
-              date,
+            age,
+             patname,
+             date ,
+              hospitalname,
+              note,
+              doze,
               meds,
-              doctor,
-              patient
+              docID,
+              patID
           });
           const createMedication =new Medication({
       
-              meds,            
-              doctor,
-              patient
+              meds, 
+              date,           
+              docID,
+              patID
           });
 
           let patientId;
 
           try {
-            patientId = await User.findOne({ email:patient  })
+            patientId = await User.findOne({ email:patID  })
           } catch (err) {
             const error = new HttpError(
               'Logging in failed, please try again later.',
@@ -254,7 +252,7 @@ const getVitalbyId = async(req,res,next) =>{
             return next(error);
           }
           console.log(patientId);
-          let doc;
+          /*let doc;
           try {
             doc = await Doctor.findById(doctor);
           } catch (err) {
@@ -270,18 +268,18 @@ const getVitalbyId = async(req,res,next) =>{
             return next(error);
           }
         
-          console.log(doc);
+          console.log(doc);*/
         
           try {
             const sess = await mongoose.startSession();
-            sess.startTransaction();
+            sess.startTransaction()
             await createPrescriptions.save({ session: sess }); 
-            await createMedication .save({ session: sess });
-            doc.prescriptions.push(createPrescriptions); 
+            await createMedication.save({ session: sess });
+           // doc.prescriptions.push(createPrescriptions); 
             patientId.prescriptions.push(createPrescriptions);
-            await doc.save({ session: sess });
-            await patientId.save({ session: sess });  
-            await sess.commitTransaction();
+            //await doc.save({ session: sess });
+           await patientId.save({ session: sess });  
+           await sess.commitTransaction();
           } catch (err) {
             const error = new HttpError(
               'Creating place failed, please try again.',
@@ -295,12 +293,14 @@ const getVitalbyId = async(req,res,next) =>{
     };
 
 
-const deleteVital = (req, res, next) => {
+const deleteVital =async (req, res, next) => {
   const vitalId = req.params.vid;
   
   let vital;
   try {
     vital = await Vital.findById(vitalId);
+    patientEmail = Vital.creator;
+    patient= await User.find({ email: patientEmail});
   } catch (err) {
     const error = new HttpError(
       'Something went wrong, could not delete vitals.',
@@ -318,7 +318,12 @@ const deleteVital = (req, res, next) => {
   }
 
   try {
-    
+    const sess = await mongoose.startSession();
+    sess.startTransaction();
+    await vital.remove({session: sess});
+    patient.vitals.pull(place);
+    await patient.save({session: sess});
+    await sess.commitTransaction();
     await vital.remove();
    
   } catch (err) {
@@ -343,3 +348,4 @@ exports.getVitalbyId = getVitalbyId;
 exports.getPrescriptionById=getPrescriptionById;
 exports.createPrescription=createPrescription;
 exports.getMedicinesById=getMedicinesById;
+exports.getAllAllergy=getAllAllergy;

@@ -12,11 +12,11 @@ const MainNavigation = () => {
   const auth = useContext(AuthContext);
     return(
         <Navbar sticky="top" bg="dark" expand="lg">
-  <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+  <Navbar.Brand href="/home">MediTech</Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
     <Nav className="mr-auto">
-    {auth.isLoggedIn && (<Nav.Link href="#home">Home</Nav.Link>)}
+    {auth.isLoggedIn && (<Nav.Link href="/">Home</Nav.Link>)}
     {auth.isLoggedIn && ( <Nav.Link href="#link">Link</Nav.Link>)}
 
     {auth.isLoggedIn && (<NavDropdown title="Dropdown" id="basic-nav-dropdown">

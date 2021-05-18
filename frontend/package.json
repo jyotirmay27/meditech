@@ -10,6 +10,7 @@
     "react": "^16.11.0",
     "react-bootstrap": "^1.6.0",
     "react-charts": "^2.0.0-beta.7",
+    "react-datepicker": "^3.8.0",
     "react-dom": "^16.11.0",
     "react-google-charts": "^3.0.15",
     "react-router-dom": "^5.2.0",

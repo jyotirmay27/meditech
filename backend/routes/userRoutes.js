@@ -8,7 +8,10 @@ const usersControllers = require('../controllers/userController');
 const router = express.Router();
 
 
-
+router.post('/allergy', [
+    check('from').not().isEmpty(),
+    check('reaction').not().isEmpty()
+],usersControllers.addallergy);
 
 router.post('/signup', [
     check('name').not().isEmpty(),
@@ -19,6 +22,8 @@ router.post('/signup', [
 ],usersControllers.signup);
 
 router.post('/login', usersControllers.login);
+
+router.post('/doctor/:uid', usersControllers.addDoctors);
 
 
 

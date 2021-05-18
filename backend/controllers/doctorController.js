@@ -1,21 +1,24 @@
 const { uuid } = require('uuidv4');
 const mongoose=require('mongoose');
 const { validationResult } = require('express-validator');
-
+const Doctor= require('../models/Doctors');
 const HttpError = require('../HttpError');
 
-const DUMMY_USERS = [
-  {
-    id: 'u1',
-    name: 'JJ',
-    email: 'test@test.com',
-    password: 'testers'
-  }
-];
 
-const getUsers = (req, res, next) => {
-  res.json({ users: DUMMY_USERS });
-};
+
+const getDoctors = async(req,res,next) =>{
+    let doctors;
+    try {
+        doctors = await Doctor.find({}, '-password');
+    } catch (err) {
+      const error = new HttpError(
+        'Fetching Doctors failed, please try again later.',
+        500
+      );
+      return next(error);
+    }
+    res.json({doctors: doctors.map(doctor => doctor.toObject({ getters: true }))});
+  };
 
 const signup =async (req, res, next) => {
   const errors = validationResult(req);
@@ -26,7 +29,7 @@ const signup =async (req, res, next) => {
 
   let existingUser;
   try {
-    existingUser =await User.findOne({ email: email})
+    existingUser =await Doctor.findOne({ email: email})
       
   } catch (err) {
       const error = new HttpError('SigningUP failed',500);
@@ -57,7 +60,7 @@ const signup =async (req, res, next) => {
     return next(error);
   }
 
-  res.status(201).json({user: createdUser.toObject({ getters: true })});
+  res.status(201).json({doctors: createdUser.toObject({ getters: true })});
 };
 
 const login = async(req, res, next) => {
@@ -66,7 +69,7 @@ const login = async(req, res, next) => {
   let existingUser;
 
   try {
-    existingUser = await User.findOne({ email: email })
+    existingUser = await Doctor.findOne({ email: email })
   } catch (err) {
     const error = new HttpError(
       'Logging in failed, please try again later.',
@@ -84,9 +87,9 @@ const login = async(req, res, next) => {
   }
 
   res.json({message: 'Logged in!',
-  user: existingUser.toObject({getters: true})});
+  doctors: existingUser.toObject({getters: true})});
 };
 
-exports.getUsers = getUsers;
+exports.getDoctors = getDoctors;
 exports.signup = signup;
 exports.login = login;

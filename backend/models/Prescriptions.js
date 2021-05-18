@@ -2,14 +2,17 @@ const mongoose=require('mongoose');
 
 const Schema = mongoose.Schema;
 
-
+  
 const prescriptionsSchema = new Schema({
-   name: { type: String , required: true},
+   patname: { type: String , required: true},
+   hospitalname: { type: String , required: true},
     age: { type: String , required: true},
     date:{ type: String , required: true},
+    note:{ type: String , required: true},
     meds: [{ type: String , required: true}],
-    doctor:{ type: mongoose.Types.ObjectId , required: true, ref: 'Prescription'},
-    patient:{ type: String , required: true} 
+    doze: [{ type: String , required: true}],
+    docID:{ type: String , required: true},
+    patID:{ type: String , required: true} 
 });
 
-module.exports = mongoose.model('Place', prescriptionsSchema);
+module.exports = mongoose.model('Prescription', prescriptionsSchema);

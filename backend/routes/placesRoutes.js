@@ -15,6 +15,8 @@ router.get('/users/:uid/vitals/:vid',placesControllers.getVitalbyId);
 
 router.get('/users/:uid/vitals',placesControllers.getAllVitals);
 
+router.get('/users/:uid/allergy',placesControllers.getAllAllergy);
+
 router.get('/users/:uid/medicines', placesControllers.getAllMedicines);
 
 router.get('/users/:uid/medicines/:mid', placesControllers.getMedicinesById);
@@ -28,8 +30,7 @@ router.post('/vitals',[
     check('date').not().isEmpty()] ,
      placesControllers.createVitals);
 
-router.post('/prescription',[
-    check('name').not().isEmpty()], placesControllers.createPrescription);
+router.post('/prescription', placesControllers.createPrescription);
 
 
  router.delete('/:vid', placesControllers.deleteVital );

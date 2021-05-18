@@ -9,6 +9,11 @@ import Row from "react-bootstrap/Row";
 import ImageTest from "../../jj.jpg";
 import { CardDeck, CardGroup } from "react-bootstrap";
 import { IndividualCard } from "./IndividualCard";
+import UserMeds from './usermeds';
+import UserPrescription from './userPrescription';
+import UserVitals from './userVitals';
+import UserAllergy  from './userAllergy';
+import { Link } from 'react-router-dom';
 
 let items = [];
 for (let i = 0; i < 20; i++) {
@@ -56,22 +61,34 @@ const Profile = () => {
                     borderRight: "1px solid rgba(0, 0, 0, 0.5)",
                 }}>
                     <Tabs
-                        defaultActiveKey="profile"
+                        defaultActiveKey="home"
                         id="uncontrolled-tab-example"
                     >
-                        <Tab eventKey="home" title="Home">
+                        <Tab eventKey="home" title="Vitals">
+                            
                             <div>
-                                <CardDeck>{items}</CardDeck>
+                                <UserVitals />
+                            </div>
+                            
+                        </Tab>
+                        <Tab eventKey="profile" title="Prescriptions">
+                        <div>
+                                <UserPrescription />
                             </div>
                         </Tab>
-                        <Tab eventKey="profile" title="Profile">
+                        <Tab eventKey="allergy" title="Allergy">
                         <div>
-                                <CardDeck>{items}</CardDeck>
+                               <UserAllergy  />
                             </div>
                         </Tab>
-                        <Tab eventKey="contact" title="Contact">
+                        <Tab eventKey="docs" title="Your Doctors">
                         <div>
-                                <CardDeck>{items}</CardDeck>
+                                <UserAllergy  />
+                            </div>
+                        </Tab>
+                        <Tab eventKey="contact" title="Medications">
+                        <div>
+                               <UserMeds />
                             </div>
                         </Tab>
                     </Tabs>

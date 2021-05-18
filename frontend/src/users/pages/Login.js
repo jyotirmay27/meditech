@@ -2,7 +2,7 @@ import React, {useState , useReducer ,useContext} from "react";
 import { Card, Button, Form} from "react-bootstrap";
 import ImageTest from "../../jj.jpg";
 import { AuthContext } from '../../shared/util/AuthContext';
-
+import { useHttpClient } from '../../shared/hooks/useHttpClient';
 import { Link } from 'react-router-dom';
 
 
@@ -10,22 +10,30 @@ import { Link } from 'react-router-dom';
 
 const Login =() =>{
   const auth = useContext(AuthContext);
-
-  const onFormSubmit = e => {
-
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const onFormSubmit =async e => {
     e.preventDefault();
     var email = document.getElementById('em'). value;
     var password = document.getElementById('pass').value;
-   
-         var formDataObj = {
-           email: email,
-           password:password
-         };
-    console.log(formDataObj);
-    auth.login();
+    try {
+      const responseData = await sendRequest(
+        'http://localhost:5000/api/users/login',
+        'POST',
+        JSON.stringify({
+          email: email,
+          password: password
+        }),
+        {
+          'Content-Type': 'application/json'
+        }
+      );
+      auth.login(responseData.user.email);
     document.getElementById('em'). value="";
     document.getElementById('pass'). value="";
-  }
+  }catch (err) {}
+};
+
+
   return (
     <div>
       <Card className="cont" bg="light" style={{}}>
@@ -58,6 +66,8 @@ const Login =() =>{
       </Card.Body>
       </Card>
     </div>
+
+    
   );
 }
 

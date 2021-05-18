@@ -7,25 +7,22 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import { useHttpClient } from '../../shared/hooks/useHttpClient';
 import {AuthContext} from '../../shared/util/AuthContext';
 
-const Vitals = () => {
+const Allergy = () => {
   const auth = useContext(AuthContext);
   const history = useHistory();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const placeSubmitHandler=async event =>{
      event.preventDefault();
-     var date = document.getElementById('date'). value;
-     var pulse = document.getElementById('pulse').value;
-     var sugar = document.getElementById('sugar'). value;
-     var BP = document.getElementById('BP').value;
+     var from = document.getElementById('AF'). value;
+     var reaction = document.getElementById('AR').value;
+
     try {
         await sendRequest(
-            'http://localhost:5000/api/places/vitals',
+            'http://localhost:5000/api/users/allergy',
             'POST', 
             JSON.stringify({
-               sugar:sugar, 
-               BP: BP,
-               pulse:pulse,
-               date: date,
+              from: from,
+              reaction:reaction,
                creator: auth.userId
             }),
      { 'Content-Type': 'application/json' }
@@ -40,21 +37,14 @@ return (
     <Jumbotron className="container" bg-dark >
 <Form className="form-signin" onSubmit = { placeSubmitHandler}>
   <Form.Group controlId="formGroupheart">
-    <Form.Label>Date</Form.Label>
-    <Form.Control type="text" id="date" placeholder="Date" />
+    <Form.Label>Allergy From</Form.Label>
+    <Form.Control type="text" id="AF" placeholder="Allergy From" />
   </Form.Group>
   <Form.Group controlId="formGroupBP">
-    <Form.Label>Blooad Pressure</Form.Label>
-    <Form.Control type="text" id="BP" placeholder="Blooad Pressure" />
+    <Form.Label>Allergy Reaction</Form.Label>
+    <Form.Control type="text" id="AR" placeholder="Allergy Reaction" />
   </Form.Group>
-  <Form.Group controlId="formGroupsugar">
-    <Form.Label>Sugar</Form.Label>
-    <Form.Control type="text" id="sugar" placeholder="Sugar" />
-  </Form.Group>
-  <Form.Group controlId="formGroupSystol">
-    <Form.Label>Heart Rate</Form.Label>
-    <Form.Control type="text" id="pulse" placeholder="Heart Rate" />
-  </Form.Group>
+
   <Button variant="primary" type="submit">
     Submit
   </Button>
@@ -63,4 +53,4 @@ return (
 );
 };
 
-export default Vitals;
+export default Allergy;
