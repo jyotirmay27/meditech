@@ -27,7 +27,7 @@ const Login =() =>{
           'Content-Type': 'application/json'
         }
       );
-      auth.login(responseData.user.email);
+      auth.login(responseData.user.email, responseData.token);
     document.getElementById('em'). value="";
     document.getElementById('pass'). value="";
   }catch (err) {}
@@ -57,8 +57,10 @@ const Login =() =>{
               
               <Form.Control type="password" id="pass" placeholder="Password" />
               <br></br>
-              <a href="#"> New Users? </a>
-            <a href="#" >&nbsp;&nbsp; Forgot Password? </a>
+              
+              <Link to='/signup'> New Users? </Link>
+              <Link to='/doctor/login'> Doctor? </Link>
+              <Link to=''> Forgot Password? </Link>
             </Form.Group>
             <Button className="button1" variant="primary" type="submit">Sign in</Button>
           </Form>

@@ -8,17 +8,17 @@ import { AuthContext } from '../../shared/util/AuthContext';
 const UserAllergy = () =>{
     const auth = useContext(AuthContext);
 const { isLoading, error, sendRequest, clearError } = useHttpClient();
-
+ 
 const [ loadedAllergy, setLoadedAllergy] = useState();
 const userId= auth.userId;
 
 useEffect(()=> {
   const fetchPlaces = async() =>{
     try{
-      const responseData = await sendRequest(
-      `http://localhost:5000/api/places/users/${userId}/allergy`
-      );
-      setLoadedAllergy(responseData.Allergy);
+        const responseData = await sendRequest(
+            `http://localhost:5000/api/places/users/${userId}/allergies`
+            );
+            setLoadedAllergy(responseData.allergies);
     }
     catch(err)
     {}

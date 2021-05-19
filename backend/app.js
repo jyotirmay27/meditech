@@ -24,6 +24,7 @@ app.use((req,res,next)=>{
 
 app.use('/api/doctors',doctorRoutes);
 
+console.log("unknow error");
 app.use('/api/users', usersRoutes);
 
 app.use('/api/places', placesRoutes);

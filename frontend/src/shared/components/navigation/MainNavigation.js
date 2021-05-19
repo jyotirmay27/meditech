@@ -6,36 +6,34 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import { AuthContext} from '../../util/AuthContext';
-import { Link } from 'react-router-dom';
-
+import {NavLink , Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 const MainNavigation = () => {
   const auth = useContext(AuthContext);
+  const history = useHistory();
+  const routeChange = () =>{ 
+    let path = `/login`; 
+    history.push(path);
+  }
     return(
-        <Navbar sticky="top" bg="dark" expand="lg">
+        <Navbar sticky="top" bg="dark" variant="dark">
   <Navbar.Brand href="/home">MediTech</Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
     <Nav className="mr-auto">
-    {auth.isLoggedIn && (<Nav.Link href="/">Home</Nav.Link>)}
-    {auth.isLoggedIn && ( <Nav.Link href="#link">Link</Nav.Link>)}
-
-    {auth.isLoggedIn && (<NavDropdown title="Dropdown" id="basic-nav-dropdown">
-        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-      </NavDropdown>)}
+    {auth.isLoggedIn && auth.isDoctor && (<NavLink style={{ color: "white", textDecoration:"none",padding: "0.5rem"}} to="/addprescription" >Add Prescription</NavLink>)}
+    {auth.isLoggedIn && !auth.isDoctor &&( <Link style={{ color: "white", textDecoration:"none",padding: "0.5rem"}} to="/vitals">Add Vitals</Link>)}
+    {auth.isLoggedIn && !auth.isDoctor &&( <NavLink style={{ color: "white", textDecoration:"none",padding: "0.5rem"}} to="/doctors">Find Doctors</NavLink>)}
+    {auth.isLoggedIn && !auth.isDoctor &&( <NavLink style={{ color: "white", textDecoration:"none", padding: "0.5rem"}} to="/allergy">Add Your Allergies</NavLink>)}
     </Nav>
-    <Form inline>
-      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-      <Button variant="outline-light">Search</Button>
-    </Form>
+    {auth.isLoggedIn &&  !auth.isDoctor &&(<Button onClick={auth.logout} variant="warning">Logout</Button>)}
+    {auth.isLoggedIn && auth.isDoctor &&(<Button onClick={auth.doctorlogout} variant="warning">Logout</Button>)}
+    {!auth.isLoggedIn  &&(<Button onClick={routeChange}  variant="warning">Login</Button>)}
   </Navbar.Collapse>
 </Navbar>
      
     );
 
 };
-
+ 
 export default MainNavigation;

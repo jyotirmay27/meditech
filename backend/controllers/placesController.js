@@ -6,7 +6,7 @@ const Prescription = require('../models/Prescriptions');
 const User= require('../models/Users');
 const Medication= require('../models/Medications');
 const Vital= require('../models/Vitals');
-
+const Allergy=require('../models/Allergy');
 
 
 const getAllVitals = async(req,res,next) =>{
@@ -30,7 +30,7 @@ const getAllVitals = async(req,res,next) =>{
 
     let allmeds;
     try {
-        allmeds = await Medication.find({ patient: emailId});
+        allmeds = await Medication.find({ patID: emailId});
     } catch (err) {
       const error = new HttpError(
         'Fetching users failed, please try again later.',
@@ -51,10 +51,9 @@ const getAllVitals = async(req,res,next) =>{
     
  const getAllAllergy = async(req,res,next) => {
     const emailId=req.params.uid;
-
   let allergy;
   try {
-    allergy = await Allergy.find({ patient: emailId});
+    allergy = await Allergy.find({ creator: emailId});
   } catch (err) {
     const error = new HttpError(
       'Fetching users failed, please try again later.',
@@ -62,13 +61,7 @@ const getAllVitals = async(req,res,next) =>{
     );
     return next(error);
   }
-  if (!allergy ) {
-      return next(
-        new HttpError('Could not find places for the provided user id.', 404)
-      );
-    }
-  res.json({Allergy: allergy.map(all => all.toObject({ getters: true }))});
-
+  res.json({allergies: allergy.map(a => a.toObject({ getters: true }))});
 };
 
   const getAllPrescriptions = async(req,res,next) =>{
@@ -77,7 +70,7 @@ const getAllVitals = async(req,res,next) =>{
 
     let allpres;
     try {
-        allpres = await Prescription.find({ patient: emailId});
+        allpres = await Prescription.find({ patID: emailId});
     } catch (err) {
       const error = new HttpError(
         'Fetching users failed, please try again later.',
@@ -86,6 +79,39 @@ const getAllVitals = async(req,res,next) =>{
       return next(error);
     }
     res.json({Prescriptions: allpres.map(pres => pres.toObject({ getters: true }))});
+  };
+  const getAllDocPrescriptions = async(req,res,next) =>{
+    const emailId=req.params.did;
+   
+
+    let allpres;
+    try {
+        allpres = await Prescription.find({ docID: emailId});
+    } catch (err) {
+      const error = new HttpError(
+        'Fetching users failed, please try again later.',
+        500
+      );
+      return next(error);
+    }
+    res.json({Prescriptions: allpres.map(pres => pres.toObject({ getters: true }))});
+  };
+
+  const getYourDoctors = async(req,res,next) =>{
+    const emailId=req.params.uid;
+   
+
+    let user;
+    try {
+        user = await User.find({ email: emailId});
+    } catch (err) {
+      const error = new HttpError(
+        'Fetching users failed, please try again later.',
+        500
+      );
+      return next(error);
+    }
+    res.json({User: user.map(pres => pres.toObject({ getters: true }))});
   };
 
 const getVitalbyId = async(req,res,next) =>{
@@ -252,7 +278,7 @@ const getVitalbyId = async(req,res,next) =>{
             return next(error);
           }
           console.log(patientId);
-          /*let doc;
+          let doc;
           try {
             doc = await Doctor.findById(doctor);
           } catch (err) {
@@ -268,16 +294,17 @@ const getVitalbyId = async(req,res,next) =>{
             return next(error);
           }
         
-          console.log(doc);*/
+          console.log(doc);
         
           try {
             const sess = await mongoose.startSession();
             sess.startTransaction()
             await createPrescriptions.save({ session: sess }); 
             await createMedication.save({ session: sess });
-           // doc.prescriptions.push(createPrescriptions); 
+            doc.prescriptions.push(createPrescriptions); 
+            doc.patients.push(patID);
             patientId.prescriptions.push(createPrescriptions);
-            //await doc.save({ session: sess });
+            await doc.save({ session: sess });
            await patientId.save({ session: sess });  
            await sess.commitTransaction();
           } catch (err) {
@@ -349,3 +376,5 @@ exports.getPrescriptionById=getPrescriptionById;
 exports.createPrescription=createPrescription;
 exports.getMedicinesById=getMedicinesById;
 exports.getAllAllergy=getAllAllergy;
+exports.getYourDoctors=getYourDoctors;
+exports.getAllDocPrescriptions =getAllDocPrescriptions;

@@ -7,7 +7,9 @@ const doctorControllers = require('../controllers/doctorController');
 
 const router = express.Router();
 
-router.get('/', doctorControllers.getDoctors)
+router.get('/all', doctorControllers.getDoctors)
+
+router.get('/:did/yourPatients', doctorControllers.getYourPatients);
 
 router.post('/signup', [
     check('name').not().isEmpty(),

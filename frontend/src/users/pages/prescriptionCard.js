@@ -1,10 +1,11 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Akira from "../../jj.jpg";
-
+import { Link } from 'react-router-dom';
  const PrescriptionCard = props => {
     return (
         <div>
+            <Link to={`/prescriptions/${props.id}` }>
             <Card
                 style={{
                     width: "18rem",
@@ -29,6 +30,7 @@ import Akira from "../../jj.jpg";
                     </Card.Text>
                 </Card.Body>
             </Card>
+            </Link>
         </div>
     );
 };

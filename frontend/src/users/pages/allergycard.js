@@ -19,12 +19,7 @@ import Akira from "../../jj.jpg";
                     <Card.Text>
                        Substance: {props.from}
                         Reaction:{props.reaction}
-                        <ul>
-                        {props.meds.map( number=> (
-                             <li key={props.id}>
-                             {number}
-                           </li>))}
-                        </ul>
+                     
 
                     </Card.Text>
                 </Card.Body>

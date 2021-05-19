@@ -10,6 +10,8 @@ import AllergyCard from './allergycard';
 const AllergyList = props =>{
     if( props.items.length === 0)
     {
+        console.log(props.items.length);
+        console.log(props.items);
         return (
         <div className=" place-list centre">
             <Card>
@@ -19,6 +21,8 @@ const AllergyList = props =>{
         </div>
         );
     }
+    console.log(props.items.length);
+        console.log(props.items);
     return(
     <CardDeck>
     {props.items.map( v=> (

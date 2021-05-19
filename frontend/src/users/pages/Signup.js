@@ -30,7 +30,7 @@ function Signup() {
         }
       );
 
-      auth.login(responseData.user.email);
+      auth.login(responseData.user.email,responseData.token);
       document.getElementById('em'). value="";
       document.getElementById('pass'). value="";
       document.getElementById('name'). value="";
