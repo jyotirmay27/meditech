@@ -7,8 +7,8 @@ const User= require('../models/Users');
 const Medication= require('../models/Medications');
 const Vital= require('../models/Vitals');
 const Allergy=require('../models/Allergy');
-
-
+const Combo = require('../models/Combo');
+const Doctor = require('../models/Doctors');
 const getAllVitals = async(req,res,next) =>{
     const userId=req.params.uid;
     let vitall;
@@ -30,6 +30,7 @@ const getAllVitals = async(req,res,next) =>{
 
     let allmeds;
     try {
+        console.log(emailId);
         allmeds = await Medication.find({ patID: emailId});
     } catch (err) {
       const error = new HttpError(
@@ -38,12 +39,9 @@ const getAllVitals = async(req,res,next) =>{
       );
       return next(error);
     }
-    if (!allmeds ) {
-        return next(
-          new HttpError('Could not find places for the provided user id.', 404)
-        );
-      }
-    res.json({Medicines: allmeds.map(meds => meds.toObject({ getters: true }))});
+    console.log(allmeds);
+
+    res.json({Medicines: allmeds.map(m => m.toObject({ getters: true }))});
   
   };
 
@@ -103,7 +101,7 @@ const getAllVitals = async(req,res,next) =>{
 
     let user;
     try {
-        user = await User.find({ email: emailId});
+        user = await Combo.find({ patient: emailId});
     } catch (err) {
       const error = new HttpError(
         'Fetching users failed, please try again later.',
@@ -280,7 +278,7 @@ const getVitalbyId = async(req,res,next) =>{
           console.log(patientId);
           let doc;
           try {
-            doc = await Doctor.findById(doctor);
+            doc = await Doctor.findOne({ email:docID  });
           } catch (err) {
             const error = new HttpError(
               'Creating place failed, please try again.',
@@ -301,11 +299,11 @@ const getVitalbyId = async(req,res,next) =>{
             sess.startTransaction()
             await createPrescriptions.save({ session: sess }); 
             await createMedication.save({ session: sess });
-            doc.prescriptions.push(createPrescriptions); 
-            doc.patients.push(patID);
-            patientId.prescriptions.push(createPrescriptions);
-            await doc.save({ session: sess });
-           await patientId.save({ session: sess });  
+            //doc.prescriptions.push(createPrescriptions); 
+            //doc.patients.push(patID);
+           // patientId.prescriptions.push(createPrescriptions);
+            //await doc.save({ session: sess });
+           //await patientId.save({ session: sess });  
            await sess.commitTransaction();
           } catch (err) {
             const error = new HttpError(

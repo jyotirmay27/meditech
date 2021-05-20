@@ -207,7 +207,7 @@ else{
     <main>
     {routes}
     </main>
-    <Footer />
+  
   </Router>
   </AuthContext.Provider>
   );

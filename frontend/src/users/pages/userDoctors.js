@@ -3,9 +3,10 @@ import { useParams } from 'react-router-dom';
 import { useHttpClient } from '../../shared/hooks/useHttpClient';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
-import docList from './doclist';
+import DocList from './doclist';
 import { AuthContext } from '../../shared/util/AuthContext';
-const userDoctors = () =>{
+
+const UserDoctors = () =>{
     const auth = useContext(AuthContext);
 const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
@@ -28,17 +29,14 @@ useEffect(()=> {
 }, [sendRequest, userId]);
 
 
-
-
-
 return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
      {isLoading && (<div className="center">  <LoadingSpinner  /></div>)}
-  {!isLoading &&loadeddoc && <docList items={loadeddoc.doctors}  />}
+  {!isLoading &&loadeddoc && <DocList items={loadeddoc}  />}
   </React.Fragment>
   );
   
 
 };
-export default userDoctors;
+export default UserDoctors;

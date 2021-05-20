@@ -269,7 +269,7 @@ function InputingPers() {
                     </Button>
                 </Form>
             </Card>
-            <Footer />
+            
         </>
     );
 }

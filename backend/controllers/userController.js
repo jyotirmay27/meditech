@@ -130,13 +130,13 @@ const addDoctors =async  (req, res, next) => {
 
   const createdCombo =new Combo({
     
-       patient,
-       doctor
+       doctor,
+       patient
 });
   let patientId;
 
   try {
-    patientId = await User.findOne({ email:user  })
+    patientId = await User.findOne({ email:patient  })
   } catch (err) {
     const error = new HttpError(
       'Logging in failed, please try again later.',
@@ -161,7 +161,7 @@ const addDoctors =async  (req, res, next) => {
     return next(error);
   }
   if (!docId) {
-    const error = new HttpError('Could not find patient for provided id.', 404);
+    const error = new HttpError('Could not find doctor for provided id.', 404);
     return next(error);
   }
   console.log(docId);

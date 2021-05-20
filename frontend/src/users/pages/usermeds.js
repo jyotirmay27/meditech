@@ -19,6 +19,7 @@ useEffect(()=> {
       const responseData = await sendRequest(
       `http://localhost:5000/api/places/users/${userId}/medicines`
       );
+      console.log(responseData.Medicines);
       setLoadedMeds(responseData.Medicines);
     }
     catch(err)
@@ -29,7 +30,7 @@ useEffect(()=> {
 }, [sendRequest, userId]);
 
 
-
+console.log(loadedmeds);
 return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />

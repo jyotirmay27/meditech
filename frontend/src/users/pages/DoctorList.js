@@ -9,21 +9,21 @@ import { AuthContext } from '../../shared/util/AuthContext';
 const Doctors = () =>{
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const [loadedDoctors, setLoadedDoctors] = useState();
+    
+    useEffect(() => {
+      const fetchUsers = async () => {
+   
+        try {
+          const responseData = await sendRequest('http://localhost:5000/api/doctors/all');
   
-  useEffect(() => {
-    const fetchUsers = async () => {
- 
-      try {
-        const responseData = await sendRequest('http://localhost:5000/api/doctors/all');
-
-
-        setLoadedDoctors(responseData.doctors);
-      } catch (err) {
-console.log(err);
-      }
-    };
-    fetchUsers();
-  }, [sendRequest]);
+  
+          setLoadedDoctors(responseData.doctors);
+        } catch (err) {
+  console.log(err);
+        }
+      };
+      fetchUsers();
+    }, [sendRequest]);
 
 
 

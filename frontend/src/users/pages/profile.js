@@ -13,6 +13,7 @@ import UserMeds from './usermeds';
 import UserPrescription from './userPrescription';
 import UserVitals from './userVitals';
 import UserAllergy  from './userAllergy';
+import UserDoctors from './userDoctors';
 import { Link } from 'react-router-dom';
 
 let items = [];
@@ -83,7 +84,7 @@ const Profile = () => {
                         </Tab>
                         <Tab eventKey="docs" title="Your Doctors">
                         <div>
-                                <UserAllergy  />
+                                <UserDoctors  />
                             </div>
                         </Tab>
                         <Tab eventKey="contact" title="Medications">

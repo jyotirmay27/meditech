@@ -2,7 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Akira from "../../jj.jpg";
 
- const docCard = props => {
+ const DocCard = props => {
     return (
         <div>
             <Card
@@ -23,4 +23,4 @@ import Akira from "../../jj.jpg";
     );
 };
 
-export default docCard;
+export default DocCard;

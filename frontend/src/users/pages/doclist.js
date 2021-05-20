@@ -3,17 +3,17 @@ import React from 'react';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import { CardDeck, CardGroup } from "react-bootstrap";
-import docCard from './docCard ';
+import DocCard from './docCard';
 
 
 
-const docList = props =>{
+const DocList = props =>{
     if( props.items.length === 0)
     {
         return (
         <div className=" place-list centre">
             <Card>
-                <h2> No Medicines Found.</h2>
+                <h2> No Doctors Found.</h2>
                 
             </Card>
         </div>
@@ -22,12 +22,12 @@ const docList = props =>{
     return(
     <CardDeck>
     {props.items.map( med=> (
-    <docCard 
-    doctor={med}
+    <DocCard 
+    doctor={med.patient}
     
     />))}
     </CardDeck> 
 
     );
 };
- export default docList;
+ export default DocList;

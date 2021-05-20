@@ -30,7 +30,7 @@ function DoctorSignup() {
         }
       );
 
-      auth.doctorlogin(responseData.user.email,responseData.token);
+      auth.doctorlogin(responseData.doctors.email,responseData.token);
       document.getElementById('em'). value="";
       document.getElementById('pass'). value="";
       document.getElementById('name'). value="";

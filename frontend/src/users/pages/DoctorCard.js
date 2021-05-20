@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import { AuthContext } from '../../shared/util/AuthContext';
 import { useHttpClient } from '../../shared/hooks/useHttpClient';
 import { useHistory } from 'react-router-dom';
+import image from '../../jj.jpg';
 const DoctorCard = props => {
     const auth = useContext(AuthContext);
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -12,15 +13,15 @@ const DoctorCard = props => {
     const userId= auth.userId;
     const history = useHistory();
     
-    const addDoc = async (docEmail)=>{
+    const addDoc = async ()=>{
          
               try {
                 const responseData = await sendRequest(
-                    `http://localhost:5000/api/users/doctor/${docEmail}`,
+                    `http://localhost:5000/api/users/doctor/${props.email}`,
                     'POST',
                     JSON.stringify({
-                      doctor:docEmail,
-                      user:userId
+                      doctor:props.email,
+                      patient:userId
                     }),
                     {
                       'Content-Type': 'application/json'
@@ -48,7 +49,7 @@ const DoctorCard = props => {
             >
                 <Image
                     variant="top"
-                    src={props.Image}
+                    src={image}
                     alt="Hello"
                     style={{
                         marginLeft: "5%",
@@ -67,7 +68,7 @@ const DoctorCard = props => {
                     </font>
                     <br></br>
                     <br></br>
-                    <Button variant="primary" onClick={addDoc(props.email)}>
+                    <Button variant="primary" onClick={addDoc}>
                         Add to <b>Your Doctor</b>
                     </Button>
                 </Card.Body>

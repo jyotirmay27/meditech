@@ -3,7 +3,7 @@ import React from 'react';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import { CardDeck, CardGroup } from "react-bootstrap";
-import medCard from './medcard';
+import MedCard from './medcard';
 
 
 
@@ -22,10 +22,10 @@ const MedList = props =>{
     return(
     <CardDeck>
     {props.items.map( med=> (
-    <medCard
+    <MedCard
     id={med.id}
-    doctor={med.doctor}
-    patient={med.patient}
+    doctor={med.docID}
+    patient={med.patID}
     date={med.date}
     meds ={med.meds}
     
