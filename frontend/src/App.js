@@ -20,7 +20,7 @@ import PatientVitals from './doctors/userVitals';
 import {Footer} from './Footer';
 import {FrontPage} from './FrontPage';
 import PatientAllergy from './doctors/userAllergy';
-
+import Appointment from './users/pages/Appointment';
 let logoutTimer;
 
 function App() {
@@ -170,6 +170,9 @@ if (token) {
     </Route>
     <Route path="/allergy" exact>
       <Allergy />
+    </Route>
+    <Route path="/appointment/:docID" exact>
+      <Appointment />
     </Route>
     <Redirect to="/home" />
 

@@ -1,0 +1,22 @@
+.DoctorListHeading {
+    /* background-image: linear-gradient(to right, #2883d2, #00daff); */
+    /* background-image: linear-gradient(to bottom, #ffffff, #98f2f8); */
+    background-color: white;
+    width: auto;
+    text-align: center;
+    font-size: 4rem;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 650;
+    color: #43bfc7;
+}
+.DoctorText {
+    color: #46b6a6;
+}
+.ListText {
+    color: #43bfc7;
+}
+.BGGradDoctorList {
+    width: 100%;
+    background-image: linear-gradient(to bottom, #ffffff, #98f2f8);
+    min-height: 100vh;
+}

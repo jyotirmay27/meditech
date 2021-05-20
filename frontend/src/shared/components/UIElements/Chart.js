@@ -35,14 +35,6 @@ function chart(props){
         1: {curveType: 'function'}
       }
     }}
-    // chartEvents={[
-    //   {
-    //     eventName: 'animationfinish',
-    //     callback: () => {
-    //       console.log('Animation Finished')
-    //     },
-    //   },
-    // ]}
     rootProps={{ 'data-testid': '2' }}
   />);
  }

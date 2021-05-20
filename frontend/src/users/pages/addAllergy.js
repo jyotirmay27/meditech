@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
-import './vitals.css';
+import "../../css/Allergy.css";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import { useHttpClient } from '../../shared/hooks/useHttpClient';
 import {AuthContext} from '../../shared/util/AuthContext';
@@ -34,22 +34,47 @@ const Allergy = () => {
 
 
 return (
-    <Jumbotron className="container" bg-dark >
-<Form className="form-signin" onSubmit = { placeSubmitHandler}>
-  <Form.Group controlId="formGroupheart">
-    <Form.Label>Allergy From</Form.Label>
-    <Form.Control type="text" id="AF" placeholder="Allergy From" />
-  </Form.Group>
-  <Form.Group controlId="formGroupBP">
-    <Form.Label>Allergy Reaction</Form.Label>
-    <Form.Control type="text" id="AR" placeholder="Allergy Reaction" />
-  </Form.Group>
+  <div className="BGGradeAllergy">
+  <div className="TopMarginAllergy"></div>
 
-  <Button variant="primary" type="submit">
-    Submit
-  </Button>
-</Form>
-</Jumbotron>
+  <div className="box" id="heading">
+      <h1 className="Heading"> Allergy Form</h1>{" "}
+  </div>
+  <Jumbotron className="container" bg-dark>
+      <Form className="form-signin" onSubmit={placeSubmitHandler}>
+          <Form.Group controlId="formGroupheart">
+              <Form.Label className="AllergyFormTextLabel">
+                  Allergy From
+              </Form.Label>
+              <Form.Control
+                  type="text"
+                  id="AF"
+                  placeholder="Allergy From"
+                  className="AllergyFormText"
+              />
+          </Form.Group>
+          <Form.Group controlId="formGroupBP">
+              <Form.Label className="AllergyFormTextLabel">
+                  Allergy Reaction
+              </Form.Label>
+              <Form.Control
+                  type="text"
+                  id="AR"
+                  className="AllergyFormText"
+                  placeholder="Allergy Reaction"
+              />
+          </Form.Group>
+          <br />
+          <Button
+              variant="primary"
+              type="submit"
+              className="AllergyButton"
+          >
+              Submit
+          </Button>
+      </Form>
+  </Jumbotron>
+</div>
 );
 };
 

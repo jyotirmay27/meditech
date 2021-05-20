@@ -21,6 +21,8 @@ router.post('/signup', [
     check('password').isLength({min : 6})
 ],usersControllers.signup);
 
+router.post('/appointment', usersControllers.Appointment);
+
 router.post('/login', usersControllers.login);
 
 router.post('/doctor/:uid', usersControllers.addDoctors);

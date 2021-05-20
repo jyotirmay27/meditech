@@ -8,6 +8,8 @@ const bcrypt =require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const mongoose=require('mongoose');
 const Combo = require('../models/Combo');
+const nodemailer = require("nodemailer");
+
 const signup =async  (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -184,6 +186,42 @@ const addDoctors =async  (req, res, next) => {
 };
 
 
+const Appointment =async  (req, res, next) => {
+  const { date, name, patEmail, docEmail } = req.body;
+  
+
+
+var patName = name;
+
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'meditech.atyourhelp@gmail.com',
+      pass: 'HelloWorld'
+    }
+  });
+  
+  var mailOptions = {
+    from: 'meditech.atyourhelp@gmail.com',
+    to: docEmail,
+    subject: 'Book an appointment',
+    html: `<p>Hello Doctor,</p>
+            <p>The patient ${patName} (${patEmail}) wants to book an appointment with you for ${date}.</p>
+            <p>Regards MediTech</p>`
+  };
+  
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+  res.json({message: 'Mail Sent!'});
+};
+
+
 const login =async  (req, res, next) => {
   const { email, password } = req.body;
 
@@ -244,3 +282,4 @@ exports.addDoctors=addDoctors;
 exports.addallergy=addallergy;
 exports.signup = signup;
 exports.login = login;
+exports.Appointment=Appointment;

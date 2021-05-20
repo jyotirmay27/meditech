@@ -1,0 +1,34 @@
+.DoctorListCards {
+    width: 16.85rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.7rem;
+    margin-top: 0.7rem;
+    align-content: center;
+    text-align: center;
+}
+.DoctorListCardsName {
+    font-size: 1.5rem;
+    color: #318074;
+    font-weight: 640;
+    font-family: "Montserrat", sans-serif;
+}
+.DoctorListCardsMail {
+    font-size: 0.8rem;
+    font-family: "Montserrat", sans-serif;
+}
+.DoctorListButtonDoctor {
+    margin-bottom: 0.5rem;
+    /* color: #43bfc7; */
+    font-family: "Montserrat", sans-serif;
+    /* border-color: #43bfc7; */
+}
+.DoctorListButtonAppointment {
+    margin-bottom: 0.5rem;
+    /* color: #43bfc7; */
+    font-family: "Montserrat", sans-serif;
+    /* border-color: #43bfc7; */
+}
+.DoctorIcon {
+    color: #6e7582;
+}

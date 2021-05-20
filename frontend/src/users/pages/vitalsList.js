@@ -8,60 +8,40 @@ import Chart from '../../shared/components/UIElements/Chart';
 
  
 const VitalList = props =>{
-    if( props.items.length === 0)
-    {    console.log(props.items.length);
-        console.log(props.items);
-        return (
-        <div className=" place-list centre">
-            <Card>
-                <h2> No Vitals Found.</h2>
-                
-            </Card>
-        </div>
-        );
-    }
-    console.log(props.items.length);
-    console.log(props.items);
-    if(props.items.length.length >=7)
-{
-    props.items.length=props.items.length.slice(Math.max(props.items.length.length - 7, 0))
-}
-if(props.items.length.length ===6)
-{
-    props.items.length=props.items.length.slice(Math.max(props.items.length.length - 6, 0))
-}
-if(props.items.length.length ===5)
-{
-    props.items.length=props.items.length.slice(Math.max(props.items.length.length - 5, 0))
-}
-if(props.items.length.length ===4)
-{
-    props.items.length=props.items.length.slice(Math.max(props.items.length.length - 4, 0))
-}
-if(props.items.length.length ===3)
-{
-    props.items.length=props.items.length.slice(Math.max(props.items.length.length - 3, 0))
-}
-
-if(props.items.length.length ===2)
-{
-    props.items.length=props.items.length.slice(Math.max(props.items.length.length - 2, 0))
-}
-if(props.items.length.length ===1)
-{
-    props.items.length=props.items.length.slice(Math.max(props.items.length.length - 1, 0))
-}
-
-var sugar=[]
+    var sugar=[]
 var BP=[];
 var pulse=[];
-for ( let j=0; j<1; j++)
-{
-    sugar.push(props.items[j].sugar);
-    BP.push(props.items[j].BP);
-    pulse.push(props.items[j].pulse);
 
-}
+        for( let i =0 ; i<7;i++)
+        {
+        if(props.items.length === i)
+        { 
+            for(let j=0; j<7-i; j++ )
+            {
+                sugar.push("90");
+                BP.push("90");
+                pulse.push("90");
+            }  
+            for(let k=0; k<i; k++)
+            {
+                sugar.push(props.items[k].sugar);
+                BP.push(props.items[k].BP);
+                pulse.push(props.items[k].pulse);
+
+            }  
+        }
+    }
+    if(props.items.length.length >=7)
+    {
+        props.items.length=props.items.length.slice(Math.max(props.items.length.length - 7, 0))
+    }
+
+
+
+
+
+
+
 sugar.push("Sugar");
 BP.push("BP");
 pulse.push("Pulse");

@@ -1,0 +1,40 @@
+.BGGrad {
+    width: 100%;
+    background-image: linear-gradient(
+        to bottom right,
+        #2883d2,
+        #00daff,
+        #2883d2
+    );
+    min-height: 90vh;
+}
+.TopMargin {
+    height: 3rem;
+    width: 0px;
+}
+.MainCard {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.CardTitleFont {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 600;
+    font-size: 3rem;
+    color: #43bfc7;
+}
+.FormStyle {
+    font-family: "Montserrat", sans-serif;
+}
+.ButtonStyle {
+    background-color: #43bfc7;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+}
+.LinkStyle {
+    color: #5f939a;
+    font-weight: 620;
+    font-family: "Montserrat", sans-serif;
+}

@@ -10,7 +10,8 @@ import { useHttpClient } from '../../shared/hooks/useHttpClient';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import { AuthContext } from '../../shared/util/AuthContext';
- 
+import "../../css/PresDisplay.css";
+
 export const Hello = () => {
     const auth = useContext(AuthContext);
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -39,55 +40,60 @@ export const Hello = () => {
             <ErrorModal error={error} onClear={clearError} />
             {isLoading && (<div className="center">  <LoadingSpinner  /></div>)}
             {!isLoading &&loadedpres &&
-        <div>
-            <Row>
+        <div className="PresShowBG">
+            <Row className="TopMargin"></Row>
+            <Row style={{ maxWidth: "98%", marginLeft: "1%" }}>
                 <Col sm={5}>
                     <Card
                         style={{
                             width: "100%",
                             height: "100%",
-                            shadowColor: "#000",
-                            shadowOffset: {
-                                width: 0,
-                                height: 10,
-                            },
-                            shadowOpacity: 0.12,
-                            shadowRadius: 60,
+
                         }}
                     >
                         <Card.Body>
-                            <Image
-                                src={ImageTest}
-                                style={{
-                                    // alignItems: "center",
-                                    textAlign: "center",
-                                    height: "20vw",
-                                    width: "20vw",
-                                    marginLeft: "auto",
-                                    marginTop: "0.5rem",
-                                    marginRight: "auto",
-                                }}
-                                roundedCircle
-                            />
-                            <br />
-                            <i class="fas fa-user fa-2x"> </i>{" "}
-                            &nbsp;&nbsp;&nbsp;
-                            <h4 style={{ display: "inline" }}>
-                                Patient Name :
-                            </h4>
-                            <h2 style={{ display: "inline" }}> {loadedpres.patname}</h2>
-                            <br />
-                            <br />
-                            <p style={{ fontSize: "12px" }}>
-                                Age : {loadedpres.age}
+                        <br />
                                 <br />
-                            </p>
-                            <p style={{ fontSize: "20px" }}>
+                                <font className="ProfilingCardTextUser">
+                                    <i className="fas fa-user fa-9x"></i>
+                                </font>
+                                {/* <Image
+                                    src={ImageTest}
+                                    className="CardImage"
+                                    roundedCircle
+                                /> */}
+                                <br />
+                                <br />
+                                <br />
+                                <font className="ProfilingCardText">
+                                    <i class="fas fa-user-injured fa-2x"> </i>{" "}
+                                </font>
+                                &nbsp;&nbsp;
+                                <h2
+                                    className="ProfilingCardText"
+                                    style={{ display: "inline" }}
+                                >
+                                Patient Name :
+                            </h2>
+                            <h2 style={{ display: "inline" }}>
+                                 {loadedpres.patname}</h2>
+                            <br />
+                            <br />
+                            <p
+                                    style={{ fontSize: "20px" }}
+                                    className="ProfilingCardText"
+                                >
+                                    <b>
+                                        {" "}
+                                        <i className="fas fa-hashtag"></i> Age :
+                                    </b>{" "}
+                                     {loadedpres.age}
+                                <br />
                                 <b>
-                                    {" "}
-                                    <i className="fas fa-user-md"></i> Doctor
-                                     :
-                                </b>{" "}
+                                        {" "}
+                                        <i className="fas fa-user-md"></i>{" "}
+                                        Doctor :
+                                    </b>{" "}
                                 {loadedpres.docID}
                                 <br />
                                 <b>
@@ -105,7 +111,7 @@ export const Hello = () => {
                                 <br />
                                 <b>
                                     {" "}
-                                    <i className="fas fa-info"></i> 
+                                    <i className="fas fa-info-circle"></i> 
                                     Note :
                                 </b>{" "}
                                 <Badge variant="info">{loadedpres.note}</Badge>
@@ -114,18 +120,32 @@ export const Hello = () => {
                     </Card>
                 </Col>
                 <Col sm={7}>
-                    <Card
-                        style={{
-                            width: "100%",
-                            height: "100%",
-                            padding: "10px",
-                        }}
-                    >
+                <Card
+                            style={{
+                                width: "100%",
+                                height: "100%",
+                                padding: "10px",
+                            }}
+                            className="ProfilingCard"
+                        >
+                            <font className="ProfilingCardText">
+                                <i class="fas fa-prescription fa-7x"></i>
+                            </font>
+                            <br />
+                            <Row>
+                                <Col sm={1}></Col>
+                                <Col sm={11} className="PrescriptionText">
                         {loadedpres.meds[0]} : {loadedpres.doze[0]}
+                        <br />
                         {loadedpres.meds[1]} : {loadedpres.doze[1]}
+                        <br />
                         {loadedpres.meds[2]} : {loadedpres.doze[2]}
+                        <br />
                         {loadedpres.meds[3]} : {loadedpres.doze[3]}
-                        <i class="fas fa-prescription fa-7x"></i>
+                        <br />
+                        <br />
+                        </Col>
+                            </Row>  
                     </Card>
                 </Col>
             </Row>

@@ -1,11 +1,11 @@
 import React, {useState , useReducer ,useContext} from "react";
-import { Card, Button, Form} from "react-bootstrap";
+import { Card, Button, Form, Row, Col} from "react-bootstrap";
 import ImageTest from "../jj.jpg";
 import { AuthContext } from '../shared/util/AuthContext';
 import { useHttpClient } from '../shared/hooks/useHttpClient';
 import { Link } from 'react-router-dom';
-
-
+import "../css/Login.css";
+import InputGroup from "react-bootstrap/InputGroup";
 
 
 const DoctorLogin =() =>{
@@ -36,33 +36,87 @@ const DoctorLogin =() =>{
 
 
   return (
-    <div>
-      <Card className="cont" bg="light" style={{}}>
-      <Card.Img style={{
-        alignItems:"center",
-        height: "15vw",
-        width: "15vw",
-        marginLeft: "auto",
-        marginTop: "0.5rem",
-        marginRight: "auto",}}
-       variant="top" src={ImageTest} alt="logo" />
-      <Card.Body>
-        <Card.Title className="heading"><h1>Doctors Log in</h1></Card.Title>
-        <Card.Text>
-          <Form className="form-signin" onSubmit={onFormSubmit}>
-            <Form.Group controlId="formBasicEmail">
-              
-              <Form.Control type="email" id="em" placeholder="Email" />
-            </Form.Group>
+    <div className="BGGrad">
+    <Row className="TopMargin"></Row>
+    <Card className="MainCard" bg="light" style={{}}>
+        <br />
+        <br />
+        <br />
+        <font color="#6e7582">
+            <i className="fas fa-hospital-user fa-8x"></i>
+        </font>
+        <br />
+        <Card.Body>
+                    <Card.Title className="CardTitleFont">
+                        <h1>Doctors Log In</h1>
+                    </Card.Title>
+                    <Card.Text>
+                        <Form className="form-signin" onSubmit={onFormSubmit}>
+                            <Form.Group controlId="formBasicEmail">
+                                <InputGroup className="mb-3">
+                                    <InputGroup.Prepend>
+                                        <InputGroup.Text id="basic-addon1">
+                                            <i class="far fa-envelope"></i>
+                                        </InputGroup.Text>
+                                    </InputGroup.Prepend>
+                                    <Form.Control
+                                        type="email"
+                                        id="em"
+                                        className="FormStyle"
+                                        placeholder="Email"
+                                    />
+                                </InputGroup>
+                            </Form.Group>
             <Form.Group controlId="formBasicPassword">
-              
-              <Form.Control type="password" id="pass" placeholder="Password" />
-              <br></br>
-              <Link to='/doctor/signup'> New Doctor? </Link>
-              <Link to='/login'> Patient? </Link>
-              <Link to=''> Forgot Password? </Link>
+            <InputGroup className="mb-3">
+                                    <InputGroup.Prepend>
+                                        <InputGroup.Text id="basic-addon1">
+                                            <i class="fas fa-key"></i>
+                                        </InputGroup.Text>
+                                    </InputGroup.Prepend>
+                                    <Form.Control
+                                        type="password"
+                                        id="pass"
+                                        className="FormStyle"
+                                        placeholder="Password"
+                                    />
+                                </InputGroup>
+                                <br></br>
+                                <Row>
+                                    <Col sm={4}>
+                                        <Link
+                                            to="/doctor/signup"
+                                            className="LinkStyle"
+                                        >
+                                            {" "}
+                                            New Doctor?{" "}
+                                        </Link>
+                                    </Col>
+                                    <Col sm={3} style={{ textAlign: "center" }}>
+                                        <Link to="/login" className="LinkStyle">
+                                            {" "}
+                                            Patient?{" "}
+                                        </Link>
+                                    </Col>
+                                    <Col sm={5} style={{ textAlign: "right" }}>
+                                        <Link to="" className="LinkStyle">
+                                            {" "}
+                                            Forgot Password?{" "}
+                                        </Link>
+                                    </Col>
+                                </Row>
             </Form.Group>
-            <Button className="button1" variant="primary" type="submit">Sign in</Button>
+            <Button
+                                style={{
+                                    backgroundColor: "#43bfc7",
+                                    fontFamily: "Montserrat, sans-serif",
+                                    fontWeight: "600",
+                                }}
+                                className="button1"
+                                variant="primary"
+                                type="submit"
+                            >Log In
+                            </Button>
           </Form>
         </Card.Text>
       </Card.Body>

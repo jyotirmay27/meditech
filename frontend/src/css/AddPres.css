@@ -1,0 +1,34 @@
+.AddPresFullBody {
+    padding: 2%;
+    background-image: linear-gradient(to bottom, #ffffff, #98f2f8);
+}
+.AddPresHeaderBox {
+    width: 100%;
+    height: 100%;
+    background-color: #43bfc7;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.AddPresBodyBox {
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.AddPresHeader {
+    color: white;
+    font-size: 60px;
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+}
+.AddPresButton {
+    background-color: #43bfc7;
+    width: 10%;
+    font-size: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+}
+.AddPresText {
+    font-family: "Montserrat", sans-serif;
+}

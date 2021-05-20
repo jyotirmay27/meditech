@@ -87,87 +87,69 @@ function InputingPers() {
    
     }
     return (
-        <>
+        <div className="AddPresFullBody">
             <Row>
                 <Col sm={3}> </Col>
                 <Col sm={6}>
-                    <Card
-                        style={{
-                            width: "100%",
-                            height: "100%",
-                            backgroundColor: "teal",
-                        }}
-                    >
-                        <Card.Title
-                            style={{
-                                color: "white",
-                                fontSize: "70px",
-                                textAlign: "center",
-                            }}
-                        >
-                            PRESCRIPTION FORM
+                    <Card className="AddPresHeaderBox">
+                        <Card.Title className="AddPresHeader">
+                            Prescription Form
                         </Card.Title>
                     </Card>
                 </Col>
                 <Col sm={3}> </Col>
             </Row>
-            <Card
-                style={{
-                    width: "100%",
-                    height: "100%",
-                    padding: "20px",
-                    marginTop: "20px",
-                }}
-            >
+            <br />
+            <Card className="AddPresBodyBox">
                 <Form onSubmit={onFormSubmit}>
                     <Form.Row>
-                        <Col sm={7}>
+                    <Col sm={6} className="AddPresText">
                             Patient Full Name
                             <br />
                             <InputGroup>
                                 <InputGroup.Text>
                                     <i class="fas fa-user"></i>
                                 </InputGroup.Text>
-                                <Form.Control id="patname" placeholder="Username" />
+                                <Form.Control id="patname" className="AddPresText" placeholder="Patient Name" />
                             </InputGroup>
                         </Col>
-                        <Col sm={1}> </Col>
-                        <Col sm={4}>
+                        <Col sm={6} className="AddPresText">
                             Patient's ID
                             <InputGroup>
                                 <InputGroup.Text>
                                     <i class="fas fa-hashtag"></i>
                                 </InputGroup.Text>
-                                <Form.Control id="patID" placeholder="Username" />
+                                <Form.Control id="patID" className="AddPresText" placeholder="Patient ID" />
                             </InputGroup>
                         </Col>
                     </Form.Row>
                     <br></br>
                     <Form.Row>
-                        <Col sm={4}>
+                    <Col sm={6} className="AddPresText">
                             Doctor ID
                             <br />
                             <InputGroup>
                                 <InputGroup.Text>
                                     <i className="fas fa-user-md"></i>
                                 </InputGroup.Text>
-                                <Form.Control id="docID" placeholder="Username" />
+                                <Form.Control id="docID" placeholder="Doctor ID"
+                                    className="AddPresText" />
                             </InputGroup>
                         </Col>
-                        <Col sm={1}> </Col>
-                        <Col sm={7}>
+                        <Col sm={6} className="AddPresText">
                             Hospital Name
                             <InputGroup>
                                 <InputGroup.Text>
                                     <i class="fas fa-hospital"></i>
                                 </InputGroup.Text>
-                                <Form.Control id="hospitalname" placeholder="Hospital Name if any" />
+                                <Form.Control id="hospitalname" placeholder="Hospital Name (if any)"
+                                    className="AddPresText" />
                             </InputGroup>
                         </Col>
                     </Form.Row>
                     <br></br>
                     <Form.Row>
-                        <Col sm={3}>
+                    <Col sm={3} className="AddPresText">
                             Date of Diagnosis
                             <br />
                             <InputGroup>
@@ -177,31 +159,34 @@ function InputingPers() {
                                 <Form.Control id="date" />
                             </InputGroup>
                         </Col>
-                        {/* <Col sm={2}></Col> */}
-                        <Col sm={1}>
+                        <Col sm={3}></Col>
+                        <Col sm={1} className="AddPresText">
                             Age
                             <br />
                             <InputGroup>
                                 <InputGroup.Text>
                                     <i className="fas fa-calendar"></i>
                                 </InputGroup.Text>
-                                <Form.Control id="age" placeholder="Age" />
+                                <Form.Control id="age"  placeholder="Age"
+                                    className="AddPresText" />
                             </InputGroup>
                         </Col>
                     </Form.Row>
                     <br></br>
-                    <Button variant="success" >Add Row</Button>
+                    
 
                     <br></br>
                     <Form.Row style={{ marginTop: "10px" }}>
                         <Table striped bordered hover size="sm">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th style={{ textAlign: "center" }}>
+                                    <th className="AddPresText">#</th>
+                                    <th className="AddPresText"
+                                     style={{ textAlign: "center" }}>
                                         Medicine Name
                                     </th>
-                                    <th style={{ textAlign: "center" }}>
+                                    <th className="AddPresText"
+                                    style={{ textAlign: "center" }}>
                                         Doze
                                     </th>
                                     <th> </th>
@@ -209,42 +194,42 @@ function InputingPers() {
                             </thead>
                             <tbody>  
                             <tr>
-        <td>1</td>
+        <td className="AddPresText">1</td>
         <td>
-            <Form.Control id="m1" placeholder="Medicine" />
+            <Form.Control id="m1" className="AddPresText" placeholder="Medicine" />
         </td>
         <td>
-            <Form.Control id="d1" placeholder="Times per Day X Number of Days" />
-        </td>
- 
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>
-            <Form.Control id="m2" placeholder="Medicine" />
-        </td>
-        <td>
-            <Form.Control id="d2" placeholder="Times per Day X Number of Days" />
+            <Form.Control id="d1" className="AddPresText" placeholder="Times per Day X Number of Days" />
         </td>
  
     </tr>
     <tr>
-        <td>3</td>
+        <td className="AddPresText">2</td>
         <td>
-            <Form.Control id="m3" placeholder="Medicine" />
+            <Form.Control id="m2" className="AddPresText" placeholder="Medicine" />
         </td>
         <td>
-            <Form.Control id="d3" placeholder="Times per Day X Number of Days" />
+            <Form.Control id="d2" className="AddPresText" placeholder="Times per Day X Number of Days" />
         </td>
  
     </tr>
     <tr>
-        <td>4</td>
+        <td className="AddPresText">3</td>
         <td>
-            <Form.Control id="m4" placeholder="Medicine" />
+            <Form.Control id="m3" className="AddPresText" placeholder="Medicine" />
         </td>
         <td>
-            <Form.Control id="d4" placeholder="Times per Day X Number of Days" />
+            <Form.Control id="d3" className="AddPresText" placeholder="Times per Day X Number of Days" />
+        </td>
+ 
+    </tr>
+    <tr>
+        <td className="AddPresText">4</td>
+        <td>
+            <Form.Control id="m4" className="AddPresText" placeholder="Medicine" />
+        </td>
+        <td>
+            <Form.Control id="d4" className="AddPresText" placeholder="Times per Day X Number of Days" />
         </td>
  
     </tr>
@@ -252,25 +237,25 @@ function InputingPers() {
                         </Table>
                     </Form.Row>
                     <Form.Row>
-                        <Col sm={11}>
+                        <Col sm={11} className="AddPresText">
                             Note for Patient
                             <br />
                             <InputGroup>
                                 <InputGroup.Text>
                                     <i class="far fa-sticky-note"></i>
                                 </InputGroup.Text>
-                                <Form.Control id="note" placeholder="Note (If Any)" />
+                                <Form.Control id="note" className="AddPresText" placeholder="Note (If Any)" />
                             </InputGroup>
                         </Col>
                     </Form.Row>
                     <br></br>
-                    <Button variant="primary" type="submit">
+                    <Button  className="AddPresButton" type="submit">
                         Submit
                     </Button>
                 </Form>
             </Card>
-            
-        </>
+            </div>
+        
     );
 }
 

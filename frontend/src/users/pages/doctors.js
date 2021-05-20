@@ -18,7 +18,11 @@ const DocList = props => {
     console.log(props.items.length);
     console.log(props.items);
     return(  
-        <CardDeck style={{ margin: ".5rem" }}>
+        <CardDeck style={{
+            margin: "0.6rem",
+            marginBottom: "0px",
+            paddingBottom: "0.7rem",
+        }}>
     { props.items.map( doc => (
          <DoctorCard  
         id={doc.id} 

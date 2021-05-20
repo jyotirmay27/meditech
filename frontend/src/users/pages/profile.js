@@ -15,7 +15,7 @@ import UserVitals from './userVitals';
 import UserAllergy  from './userAllergy';
 import UserDoctors from './userDoctors';
 import { Link } from 'react-router-dom';
-
+import "../../css/Profile.css";
 let items = [];
 for (let i = 0; i < 20; i++) {
     items.push(<IndividualCard />);
@@ -24,13 +24,15 @@ for (let i = 0; i < 20; i++) {
 const Profile = () => {
    
     return (  
-        <div
-            style={{
-                marginLeft: "2rem",
-                marginRight: "1rem",
-                marginTop: "1rem",
-            }}
-        >
+        <div className="BGGradProfile">
+            <div
+                style={{
+                    marginLeft: "2rem",
+                    marginRight: "1rem",
+                    marginTop: "1rem",
+                    minHeight: "80vh",
+                }}
+            >
             <Row  md={12} sm={0}>
                 <Col
                     sm={3}
@@ -38,22 +40,19 @@ const Profile = () => {
                         borderRight: "1px solid rgba(0, 0, 0, 0.5)",
                     }}
                 >
-                    <Card style={{ width: "100%" }}>
-                        <Image
-                            variant="top"
-                            src={ImageTest}
-                            style={{
-                                height: "20vw",
-                                width: "20vw",
-                                marginLeft: "auto",
-                                marginTop: "0.5rem",
-                                marginRight: "auto",
-                            }}
-                            roundedCircle
-                        />
+                    <Card className="ProfileCard">
+                       
+                           <br />
+                            <br />
+                            <font className="ProfiledCardText">
+                                <i class="fas fa-user fa-9x"> </i>{" "}
+                            </font>
+
+                            <br />
+                            <br />
                         <Card.Body>
-                            <Card.Title>Name</Card.Title>
-                            <Card.Text>All Important Information</Card.Text>
+                            <Card.Title className="ProfileCardTextTitle">Name</Card.Title>
+                            <Card.Text className="ProfileCardTextInfo">All Important Information</Card.Text>
                         </Card.Body>
                     </Card>
                 </Col>
@@ -64,6 +63,11 @@ const Profile = () => {
                     <Tabs
                         defaultActiveKey="home"
                         id="uncontrolled-tab-example"
+                        style={{
+                            fontFamily: "Montserrat, sans-serif",
+                            fontWeight: "600",
+                            color: "red",
+                        }}
                     >
                         <Tab eventKey="home" title="Vitals">
                             
@@ -95,6 +99,7 @@ const Profile = () => {
                     </Tabs>
                 </Col>
             </Row>
+        </div>{" "}
         </div>
     );
 };

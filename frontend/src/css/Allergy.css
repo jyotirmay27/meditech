@@ -1,0 +1,59 @@
+.form-signin {
+    width: 100%;
+    max-width: 420px;
+    padding: 15px;
+    margin: auto;
+}
+.container {
+    width: 50%;
+    max-width: 500px;
+    /* margin-top: 6%; */
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+.BGGradeAllergy {
+    width: 100%;
+    /* background-image: linear-gradient(
+        to bottom right,
+        #2883d2,
+        #00daff,
+        #2883d2
+    ); */
+    background-image: -webkit-linear-gradient(70deg, #43bfc7 50%, #daf3f5 50%);
+    min-height: 110vh;
+}
+.TopMarginAllergy {
+    height: 1.5rem;
+    width: 0px;
+}
+.AllergyButton {
+    background-color: #43bfc7;
+    float: right;
+}
+.AllergyFormText {
+    font-family: "Montserrat", sans-serif;
+}
+.AllergyFormTextLabel {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+}
+.box {
+    max-width: 500px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+#heading {
+    background-color: #43bfc7;
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+}
+.Heading {
+    color: #fff;
+    padding: 10px;
+    font-weight: 560;
+    font-size: 45px;
+}

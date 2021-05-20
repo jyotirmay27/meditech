@@ -1,0 +1,35 @@
+.PresShowBG {
+    background-image: linear-gradient(to right, #2883d2, #00daff);
+    min-height: 90vh;
+}
+.TopMargin {
+    height: 5rem;
+    width: 0rem;
+}
+.CardImage {
+    height: 20vw;
+    width: 20vw;
+    margin-left: 20%;
+    margin-right: 20%;
+    box-shadow: 0 14px 20px 0 rgba(0, 0, 0, 0.2),
+        0 16px 40px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 0.5rem;
+}
+.ProfilingCard {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.ProfilingCardText {
+    font-family: "Open Sans", sans-serif;
+    color: #2883b2;
+}
+.ProfilingCardTextUser {
+    text-align: center;
+    margin-left: 38%;
+    margin-right: 38%;
+
+    color: #6e7582;
+}
+.PrescriptionText {
+    font-size: 2vw;
+    font-family: "Montserrat", sans-serif;
+}

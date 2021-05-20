@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import { AuthContext} from '../../util/AuthContext';
 import {NavLink , Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
+import "../../../css/MainNav.css";
 const MainNavigation = () => {
   const auth = useContext(AuthContext);
   const history = useHistory();
@@ -16,15 +17,32 @@ const MainNavigation = () => {
     history.push(path);
   }
     return(
-        <Navbar sticky="top" bg="dark" variant="dark">
-  <Navbar.Brand href="/home">MediTech</Navbar.Brand>
+        <Navbar sticky="top" bg="dark" variant="dark" className="BGGrade">
+  <Navbar.Brand className="MediTechLogo" href="/home">MediTech</Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
-    <Nav className="mr-auto">
-    {auth.isLoggedIn && auth.isDoctor && (<NavLink style={{ color: "white", textDecoration:"none",padding: "0.5rem"}} to="/addprescription" >Add Prescription</NavLink>)}
-    {auth.isLoggedIn && !auth.isDoctor &&( <Link style={{ color: "white", textDecoration:"none",padding: "0.5rem"}} to="/vitals">Add Vitals</Link>)}
-    {auth.isLoggedIn && !auth.isDoctor &&( <NavLink style={{ color: "white", textDecoration:"none",padding: "0.5rem"}} to="/doctors">Find Doctors</NavLink>)}
-    {auth.isLoggedIn && !auth.isDoctor &&( <NavLink style={{ color: "white", textDecoration:"none", padding: "0.5rem"}} to="/allergy">Add Your Allergies</NavLink>)}
+    <Nav className="mr-auto"></Nav>
+    <Nav>
+    {auth.isLoggedIn && auth.isDoctor && (<NavLink className="NavbarLinks" to="/addprescription">
+                            <i class="fas fa-prescription"> </i>
+                            {"   "}
+                            Add Prescription
+                        </NavLink>)}
+    {auth.isLoggedIn && !auth.isDoctor &&( <Link className="NavbarLinks" to="/vitals">
+                            <i class="fas fa-heartbeat"></i>
+                            {"   "}
+                            Add Vitals
+                        </Link>)}
+    {auth.isLoggedIn && !auth.isDoctor &&(<NavLink className="NavbarLinks" to="/doctors">
+                            <i class="fas fa-user-md"></i>
+                            {"   "}
+                            Find Doctors
+                        </NavLink>)}
+    {auth.isLoggedIn && !auth.isDoctor &&(<NavLink className="NavbarLinks" to="/allergy">
+                            <i class="fas fa-capsules"></i>
+                            {"   "}
+                            Add Your Allergies
+                        </NavLink>)}
     </Nav>
     {auth.isLoggedIn &&  !auth.isDoctor &&(<Button onClick={auth.logout} variant="warning">Logout</Button>)}
     {auth.isLoggedIn && auth.isDoctor &&(<Button onClick={auth.doctorlogout} variant="warning">Logout</Button>)}

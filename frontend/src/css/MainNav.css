@@ -1,0 +1,21 @@
+.BGGrade {
+    width: 100%;
+    background-image: linear-gradient(
+        to right,
+        #2883d2,
+        #00daff /* #2883d2 #43bfc7 */
+    );
+}
+.MediTechLogo {
+    font-weight: 700;
+    font-size: 27px;
+    font-family: "Ubuntu", sans-serif;
+}
+.NavbarLinks {
+    color: white;
+    text-decoration: none;
+    margin-right: 0.8rem;
+    padding: 0.5rem;
+    font-weight: 620;
+    font-family: "Montserrat", sans-serif;
+}

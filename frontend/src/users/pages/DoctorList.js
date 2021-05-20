@@ -6,6 +6,8 @@ import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import DocList from './doctors';
 import { useHttpClient } from '../../shared/hooks/useHttpClient';
 import { AuthContext } from '../../shared/util/AuthContext';
+import "../../css/DoctorList.css";
+
 const Doctors = () =>{
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const [loadedDoctors, setLoadedDoctors] = useState();
@@ -36,18 +38,11 @@ const Doctors = () =>{
         </div>
       )}
     <>
-    <Card
-        bg="info"
-        style={{
-            width: "auto",
-            textAlign: "center",
-            fontSize: "4rem",
-            fontFamily: "Lucida Calligraphy",
-        }}
-    >
-        Doctors List
-    </Card>
-    {!isLoading &&loadedDoctors && <DocList items={loadedDoctors} />}
+    <div className="DoctorListHeading">Doctors List</div>
+    {!isLoading &&loadedDoctors && 
+    <div className="BGGradDoctorList">
+    <DocList items={loadedDoctors} />
+    </div>}
     </>
     </React.Fragment>
          

@@ -1,0 +1,32 @@
+.TabColor {
+    color: white;
+}
+.BGGradProfile {
+    width: 100%;
+    background-image: linear-gradient(to bottom, #ffffff, #98f2f8);
+    min-height: 90vh;
+}
+.ProfileCard {
+    background-color: #ecececab;
+    /* background-image: linear-gradient(to bottom right, #2884d2, #00daff); */
+    border-width: 2px;
+    width: 100%;
+    border-color: turquoise;
+}
+.ProfileCardTextTitle {
+    /* color: white; */
+    font-family: "Montserrat", sans-serif;
+    font-weight: 620;
+    font-size: 30px;
+}
+.ProfiledCardText {
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-right: 30%;
+    color: #6e7582;
+}
+.ProfileCardTextInfo {
+    color: rgb(117, 117, 117);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 550;
+}

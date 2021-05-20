@@ -1,6 +1,6 @@
 import React,{useState , useReducer ,useContext} from "react";
 import './styles.css';
-import { Card, Button, Form} from "react-bootstrap";
+import { Card, Button, Form,Row, InputGroup} from "react-bootstrap";
 import ImageTest from "../../jj.jpg";
 import { AuthContext } from '../../shared/util/AuthContext';
 import { useHttpClient } from '../../shared/hooks/useHttpClient';
@@ -39,32 +39,72 @@ function Signup() {
   }
 
   return (
-    <div>
-      <Card className="cont"  style={{}}>
-      <Card.Img  style={{
-        alignItems:"center",
-        height: "15vw",
-        width: "15vw",
-        marginLeft: "auto",
-        marginTop: "0.5rem",
-        marginRight: "auto",}}
-      variant="top" src={ImageTest} alt="logo" />
+    <div className="BGGrad">
+    <Row className="TopMargin"></Row>
+    <Card
+        // className="cont"
+        bg="light"
+        className="MainCard"
+    >
+        <br />
+        <br />
+        <br />
+        <font color="#6e7582">
+            <i className="fas fa-hospital-user fa-8x"></i>
+        </font>
+        <br />
       <Card.Body>
         <Card.Title className="heading"><h2>Sign Up</h2></Card.Title>
         <Card.Text>
           <Form className="form-signin" onSubmit={onFormSubmit}>
             <Form.Group controlId="formBasicFName">
-              <Form.Control  type="text" id="name" placeholder="Name" />
+            <InputGroup className="mb-3">
+                                    <InputGroup.Prepend>
+                                        <InputGroup.Text id="basic-addon1">
+                                            <i class="fas fa-user"></i>
+                                        </InputGroup.Text>
+                                    </InputGroup.Prepend>
+              <Form.Control  type="text" id="name" placeholder="Name" className="FormStyle" />
+              </InputGroup>
             </Form.Group>
             <Form.Group controlId="formBasicEmail">
-             
-              <Form.Control type="email" id="em" placeholder="Email" />
-            </Form.Group>
-            <Form.Group controlId="formBasicPassword">
-              
-              <Form.Control type="password" id="pass" placeholder="Password" />
-            </Form.Group>
-            <Button className="button1" variant="primary" type="submit">Submit</Button>
+                                <InputGroup className="mb-3">
+                                    <InputGroup.Prepend>
+                                        <InputGroup.Text id="basic-addon1">
+                                            <i className="fas fa-envelope"></i>
+                                        </InputGroup.Text>
+                                    </InputGroup.Prepend>
+                                    <Form.Control
+                                        type="email"
+                                        id="em"
+                                        placeholder="Email"
+                                        className="FormStyle"
+                                    />
+                                </InputGroup>
+                            </Form.Group>
+                            <Form.Group controlId="formBasicPassword">
+                                <InputGroup className="mb-3">
+                                    <InputGroup.Prepend>
+                                        <InputGroup.Text id="basic-addon1">
+                                            <i class="fas fa-key"></i>
+                                        </InputGroup.Text>
+                                    </InputGroup.Prepend>
+                                    <Form.Control
+                                        type="password"
+                                        id="pass"
+                                        placeholder="Password"
+                                        className="FormStyle"
+                                    />
+                                </InputGroup>
+                            </Form.Group>
+            <Button   className="button1"
+                                variant="primary"
+                                type="submit"
+                                style={{
+                                    backgroundColor: "#43bfc7",
+                                    fontFamily: "Montserrat, sans-serif",
+                                    fontWeight: "600",
+                                }}>Submit</Button>
           </Form>
         </Card.Text>
       </Card.Body>
