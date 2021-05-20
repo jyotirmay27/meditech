@@ -55,7 +55,7 @@ if(props.items.length.length ===1)
 var sugar=[]
 var BP=[];
 var pulse=[];
-for ( let j=0; j<7; j++)
+for ( let j=0; j<1; j++)
 {
     sugar.push(props.items[j].sugar);
     BP.push(props.items[j].BP);

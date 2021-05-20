@@ -17,8 +17,9 @@ import { DocContext } from './shared/util/DocContext';
 import InputingPers from './doctors/addprescription';
 import Doctors from './users/pages/DoctorList';
 import PatientVitals from './doctors/userVitals';
-import {Footer} from './shared/components/UIElements/Footer';
+import {Footer} from './Footer';
 import {FrontPage} from './FrontPage';
+import PatientAllergy from './doctors/userAllergy';
 
 let logoutTimer;
 
@@ -120,6 +121,9 @@ if(isDoctor){
     <Route path="/patients/:patID" exact>
       <PatientVitals />
     </Route>
+    <Route path="/allergy/:patID" exact>
+      <PatientAllergy />
+    </Route>
       <Redirect to="/home" />
   
     </Switch>
@@ -204,10 +208,10 @@ else{
     >
     <Router>
     <MainNavigation />
-    <main>
+    <main style={{minHeight: "90vh"}}>
     {routes}
     </main>
-  
+  <Footer />
   </Router>
   </AuthContext.Provider>
   );

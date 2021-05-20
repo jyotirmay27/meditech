@@ -19,7 +19,8 @@ import { Link } from 'react-router-dom';
                     <Card.Title>{props.date}</Card.Title>
                     <Card.Text>
                        Doctor: {props.doctor}
-                        Patient:{props.name}
+                       <br></br>
+                        Patient:{props.patient}
                         <ul>
                         {props.meds.map( number=> (
                              <li key={props.id}>

@@ -18,6 +18,7 @@ useEffect(()=> {
       const responseData = await sendRequest(
       `http://localhost:5000/api/doctors/${userId}/yourPatients`
       );
+      
       setLoadedDoc(responseData.doctor);
     }
     catch(err)
