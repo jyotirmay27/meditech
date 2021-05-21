@@ -76,7 +76,7 @@ Try again
         </font>
         <br />
       <Card.Body>
-        <Card.Title className="heading"><h2>Sign Up</h2></Card.Title>
+        <Card.Title className="heading"><h2 className="CardTitleFont">Sign Up</h2></Card.Title>
         <Card.Text>
           <Form className="form-signin" onSubmit={onFormSubmit}>
             <Form.Group controlId="formBasicFName">

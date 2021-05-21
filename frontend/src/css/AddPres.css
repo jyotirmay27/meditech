@@ -3,7 +3,9 @@
     background-image: linear-gradient(to bottom, #ffffff, #98f2f8);
 }
 .AddPresHeaderBox {
-    width: 100%;
+    width: 55%;
+    margin-left: auto;
+    margin-right: auto;
     height: 100%;
     background-color: #43bfc7;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -31,4 +33,19 @@
 }
 .AddPresText {
     font-family: "Montserrat", sans-serif;
+}
+@media screen and (max-width: 768px) {
+    .AddPresHeaderBox {
+        width: 90vw;
+    }
+    .AddPresHeader {
+        font-size: 4vh;
+    }
+    .AddPresText {
+        font-size: 2vh;
+    }
+    .AddPresButton {
+        width: auto;
+        font-size: 2vh;
+    }
 }

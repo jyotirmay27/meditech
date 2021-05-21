@@ -24,7 +24,6 @@ export const FrontPage = () => {
                                 className="d-block w-100 imgcarousel"
                                 src={PageBG}
                                 alt="First slide"
-                                
                             />
                         </Carousel.Item>
                         <Carousel.Item>
@@ -32,7 +31,6 @@ export const FrontPage = () => {
                                 className="d-block w-100 imgcarousel"
                                 src={PageBG}
                                 alt="Second slide"
-                                
                             />
                         </Carousel.Item>
                         <Carousel.Item>
@@ -40,7 +38,6 @@ export const FrontPage = () => {
                                 className="d-block w-100 imgcarousel"
                                 src={PageBG}
                                 alt="Third slide"
-                                
                             />
                         </Carousel.Item>
                     </Carousel>
@@ -142,19 +139,19 @@ export const FrontPage = () => {
                         </Col>
                         <Col sm={1}></Col>
                         <Col sm={7}>
-                            <Fade right cascade>
+                            <Fade right>
                                 <font className="FPAboutUsHeading">
                                     CODEKAR
                                 </font>
                                 <hr className="AboutUs" />
-                                <font className="FPAboutUsText">
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Inventore voluptatum ea
-                                    aliquid provident, pariatur cum dolor
-                                    consequatur molestiae doloribus ut ad,
-                                    quaerat distinctio sunt optio itaque amet
-                                    asperiores neque voluptatem?
-                                </font>
+                                <p className="FPAboutUsText">
+                                    We are a team of four tech enthusiasts
+                                    striving to solve the problems of the world
+                                    and benefit the society. We want to put
+                                    technology to its best use to make people's
+                                    lives easier and the earth a better place to
+                                    live.
+                                </p>
                             </Fade>
                         </Col>
                     </Row>
@@ -167,9 +164,7 @@ export const FrontPage = () => {
                     <div className="FPFeaturesCard">
                         <Row>
                             <Col sm={4} className="FPFeaturesColumm">
-                            
                                 <Fade left>
-                                    
                                     <i
                                         className="fas fa-heartbeat fa-3x"
                                         id="iconFeatures"
@@ -177,21 +172,21 @@ export const FrontPage = () => {
                                 </Fade>
                                 <br />
                                 <br />
-                                <Fade right cascade>
+                                <Fade right>
                                     <font className="FPFeaturesText">
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Quisquam, minus quae.
-                                        Sint reprehenderit provident assumenda
-                                        mollitia voluptatem impedit itaque ullam
-                                        aut quaerat cupiditate dolore
-                                        necessitatibus veritatis id, quasi
-                                        fugiat adipisci.
+                                        We have a system to monitor your daily
+                                        vitals like blood pressure, blood sugar
+                                        levels, height, weight, and heart rate
+                                        through which you have a good idea of
+                                        your current health at all times. Vitals
+                                        are present as interactive graphs to you
+                                        and your doctor, so your health is
+                                        always in check.
                                     </font>
-                                    <br/>
-                                    <br/>
-                                    <br/>
+                                    <br />
+                                    <br />
+                                    <br />
                                 </Fade>
-                                
                             </Col>
                             <Col sm={4} className="FPFeaturesColumm">
                                 <Fade top>
@@ -202,20 +197,21 @@ export const FrontPage = () => {
                                 </Fade>
                                 <br />
                                 <br />
-                                
-                                <Fade right cascade>
+
+                                <Fade right>
                                     <font className="FPFeaturesText">
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Quisquam, minus quae.
-                                        Sint reprehenderit provident assumenda
-                                        mollitia voluptatem impedit itaque ullam
-                                        aut quaerat cupiditate dolore
-                                        necessitatibus veritatis id, quasi
-                                        fugiat adipisci.
+                                        Now no need to remember all your
+                                        allergies as we have the data handy for
+                                        you. We maintain a database of your
+                                        allergies which will help you remain
+                                        cautious of the potential dangers.
+                                        Moreover, your allergies are visible to
+                                        the doctor as well, so he can prescribe
+                                        medicines accordingly.
                                     </font>
-                                    <br/>
-                                    <br/>
-                                    <br/>
+                                    <br />
+                                    <br />
+                                    <br />
                                 </Fade>
                             </Col>
                             <Col sm={4} className="FPFeaturesColumm">
@@ -227,16 +223,18 @@ export const FrontPage = () => {
                                 </Fade>
                                 <br />
                                 <br />
-                                
-                                <Fade right cascade>
+
+                                <Fade right>
                                     <font className="FPFeaturesText">
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Quisquam, minus quae.
-                                        Sint reprehenderit provident assumenda
-                                        mollitia voluptatem impedit itaque ullam
-                                        aut quaerat cupiditate dolore
-                                        necessitatibus veritatis id, quasi
-                                        fugiat adipisci.
+                                        We save all of your previous
+                                        prescriptions to our electronic medical
+                                        record system, so now you don't have to
+                                        carry them to the doctor. These are
+                                        always easily accessible to you and your
+                                        doctor which helps in a good diagnosis
+                                        of any problem you may have. It also
+                                        helps to keep track of the required
+                                        medicine dosage.
                                     </font>
                                 </Fade>
                             </Col>
@@ -252,18 +250,17 @@ export const FrontPage = () => {
                                 </Fade>
                                 <br />
                                 <br />
-                                <Fade right cascade>
+                                <Fade right>
                                     <font className="FPFeaturesText">
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Quisquam, minus quae.
-                                        Sint reprehenderit provident assumenda
-                                        mollitia voluptatem impedit itaque ullam
-                                        aut quaerat cupiditate dolore
-                                        necessitatibus veritatis id, quasi
-                                        fugiat adipisci.
+                                        We save all of your doctors under a
+                                        separate section, so you don't have to
+                                        search them in the ocean of doctors.
+                                        With this feature, it is easy to find
+                                        them and get their details to contact
+                                        them whenever required.
                                     </font>
-                                    <br/>
-                                    <br/>
+                                    <br />
+                                    <br />
                                     <br />
                                 </Fade>
                             </Col>
@@ -276,20 +273,16 @@ export const FrontPage = () => {
                                 </Fade>
                                 <br />
                                 <br />
-                                
-                                <Fade right cascade>
+
+                                <Fade right>
                                     <font className="FPFeaturesText">
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Quisquam, minus quae.
-                                        Sint reprehenderit provident assumenda
-                                        mollitia voluptatem impedit itaque ullam
-                                        aut quaerat cupiditate dolore
-                                        necessitatibus veritatis id, quasi
-                                        fugiat adipisci.
+                                        Using this platform, you can easily book
+                                        an appointment with any doctor with just
+                                        a click from the comfort of your home.
                                     </font>
-                                    <br/>
-                                    <br/>
-                                    <br/>
+                                    <br />
+                                    <br />
+                                    <br />
                                 </Fade>
                             </Col>
                             <Col sm={4} className="FPFeaturesColumm">
@@ -301,15 +294,14 @@ export const FrontPage = () => {
                                 </Fade>
                                 <br />
                                 <br />
-                                <Fade right cascade>
+                                <Fade right>
                                     <font className="FPFeaturesText">
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Quisquam, minus quae.
-                                        Sint reprehenderit provident assumenda
-                                        mollitia voluptatem impedit itaque ullam
-                                        aut quaerat cupiditate dolore
-                                        necessitatibus veritatis id, quasi
-                                        fugiat adipisci.
+                                        You can search for your complete medical
+                                        history, all prescriptions, vitals,
+                                        allergies, and doctors from our database
+                                        with great ease. Everything is now at
+                                        your fingertips, making your life easier
+                                        and more organized.
                                     </font>
                                 </Fade>
                             </Col>

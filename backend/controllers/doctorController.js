@@ -10,7 +10,7 @@ const Combo = require('../models/Combo');
 const getDoctors = async(req,res,next) =>{
     let doctors;
     try {
-        doctors = await Doctor.find({}, '-password');
+        doctors = await Doctor.find({}, '-password');// find doctors in database and return all information except password.
     } catch (err) {
       const error = new HttpError(
         'Fetching Doctors failed, please try again later.',
@@ -19,15 +19,17 @@ const getDoctors = async(req,res,next) =>{
       return next(error);
     }
     res.json({doctors: doctors.map(doctor => doctor.toObject({ getters: true }))});
-  };
+  };// getters: true will send response object ID as 'id' instead of '_id' which mongoDB created automatically
+
+  // this fetch the Prescriptions for the particular user
 
   const getYourPatients = async(req,res,next) =>{
-    const emailId=req.params.did;
+    const emailId=req.params.did; // gets the email id from url
    
 
     let user;
     try {
-        user = await Combo.find({ doctor: emailId});
+        user = await Combo.find({ doctor: emailId});// find the email in database
     } catch (err) {
       const error = new HttpError(
         'Fetching users failed, please try again later.',
@@ -36,7 +38,10 @@ const getDoctors = async(req,res,next) =>{
       return next(error);
     }
     res.json({doctor: user.map(pres => pres.toObject({ getters: true }))});
-  };
+  };// getters: true will send response object ID as 'id' instead of '_id' which mongoDB created automatically
+
+  // this fetch the Prescriptions for the particular user
+
 
 const signup =async (req, res, next) => {
   const errors = validationResult(req);
@@ -62,7 +67,7 @@ const signup =async (req, res, next) => {
       }
       let hashedPassword;
       try{
-      hashedPassword = await bcrypt.hash(password,12);
+      hashedPassword = await bcrypt.hash(password,12);// hash the password to 12 digits
       }
       catch(err)
       {
@@ -70,7 +75,7 @@ const signup =async (req, res, next) => {
         return next(error);
       }
 
-  const createdUser =new Doctor({
+  const createdUser =new Doctor({// create new user template to enter in database
     
     name, // name: name
     email,
@@ -78,7 +83,7 @@ const signup =async (req, res, next) => {
     prescriptions:[]
   });
   try {
-    await createdUser.save();
+    await createdUser.save();// save the data in database by this line
   } catch (err) {
     const error = new HttpError(
       'Signing up failed, please try again.',
@@ -90,9 +95,9 @@ const signup =async (req, res, next) => {
   let token;
   try {
     token = jwt.sign(
-      { userId: createdUser.id, email: createdUser.email },
-      'supersecret_dont_share_it',
-      { expiresIn: '1h' }
+      { userId: createdUser.id, email: createdUser.email },// it will create a token storing email and user ID in it
+      'supersecret_dont_share_it', // this is the key which is very specific and could lead to system hack
+      { expiresIn: '1h' }// token will be expired in 1hr
     );
   } catch (err) {
     const error = new HttpError(
@@ -102,15 +107,18 @@ const signup =async (req, res, next) => {
     return next(error);
   }
   res.status(201).json({doctors: createdUser.toObject({ getters: true }),token:token});
-};
+};// getters: true will send response object ID as 'id' instead of '_id' which mongoDB created automatically
+
+// this fetch the Prescriptions for the particular user
+
 
 const login = async(req, res, next) => {
-  const { email, password } = req.body;
+  const { email, password } = req.body;// will recieve json data from front to process further
 
   let existingUser;
 
   try {
-    existingUser = await Doctor.findOne({ email: email })
+    existingUser = await Doctor.findOne({ email: email })// find the email in database
   } catch (err) {
     const error = new HttpError(
       'Logging in failed, please try again later.',
@@ -129,7 +137,7 @@ const login = async(req, res, next) => {
 
   let isValidPassword= false;
   try {
-  isValidPassword= await bcrypt.compare(password,existingUser.password)
+  isValidPassword= await bcrypt.compare(password,existingUser.password)// will conpare the password you entered and which is saved hashed in database.
   }
   catch(err)
   {
@@ -144,9 +152,9 @@ const login = async(req, res, next) => {
   let token;
   try {
     token = jwt.sign(
-      { userId: existingUser.id, email: existingUser.email },
-      'supersecret_dont_share_it',
-      { expiresIn: '1h' }
+      { userId: existingUser.id, email: existingUser.email },// it will create a token storing email and user ID in it
+      'supersecret_dont_share_it',// this is the key which is very specific and could lead to system hack
+      { expiresIn: '1h' }// token will be expired in 1hr
     );
   } catch (err) {
     const error = new HttpError(
@@ -157,8 +165,11 @@ const login = async(req, res, next) => {
   }
   res.json({message: 'Logged in!',
   doctors: existingUser.toObject({getters: true}),token:token});
-};
+};// getters: true will send response object ID as 'id' instead of '_id' which mongoDB created automatically
 
+// this fetch the Prescriptions for the particular user
+
+// and finally export all files.
 exports.getDoctors = getDoctors;
 exports.signup = signup;
 exports.login = login;

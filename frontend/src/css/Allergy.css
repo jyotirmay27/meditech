@@ -29,6 +29,8 @@
 .AllergyButton {
     background-color: #43bfc7;
     float: right;
+
+    font-family: "Montserrat", sans-serif;
 }
 .AllergyFormText {
     font-family: "Montserrat", sans-serif;
@@ -56,4 +58,24 @@
     padding: 10px;
     font-weight: 560;
     font-size: 45px;
+}
+@media screen and (max-width: 768px) {
+    .box {
+        max-width: 85vw;
+    }
+    .Heading {
+        font-size: 4vh;
+    }
+    .container {
+        width: 85vw;
+    }
+    .AllergyFormText {
+        font-size: 1.8vh;
+    }
+    .AllergyFormTextLabel {
+        font-size: 2.5vh;
+    }
+    .AllergyButton {
+        font-size: 2vh;
+    }
 }

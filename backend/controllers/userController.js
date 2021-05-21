@@ -11,15 +11,15 @@ const Combo = require('../models/Combo');
 const nodemailer = require("nodemailer");
 
 const signup =async  (req, res, next) => {
-  const errors = validationResult(req);
+  const errors = validationResult(req); // this will validate the checks we put on user router file for name email and password.
   if (!errors.isEmpty()) {
     throw new HttpError('Invalid inputs passed, please check your data.', 422);
   }
-  const { name, email, password } = req.body;
+  const { name, email, password } = req.body; // will recieve json data from front to process further
 
   let existingUser;
   try {
-    existingUser =await User.findOne({ email: email})
+    existingUser =await User.findOne({ email: email}) // find the email in database
       
   } catch (err) {
       const error = new HttpError('SigningUP failed',500);
@@ -35,14 +35,14 @@ const signup =async  (req, res, next) => {
 
       let hashedPassword;
       try{
-      hashedPassword = await bcrypt.hash(password,12);
+      hashedPassword = await bcrypt.hash(password,12); // hash the password to 12 digits
       }
       catch(err)
       {
         const error = new HttpError('could not create', 500);  
         return next(error);
       }
-  const createdUser =new User ({
+  const createdUser =new User ({ // create new user template to enter in database
 
     name, 
     email,
@@ -52,7 +52,7 @@ const signup =async  (req, res, next) => {
   });
 
   try {
-    await createdUser.save();
+    await createdUser.save(); // save the data in database by this line
   } catch (err) {
     const error = new HttpError(
       'Signing up failed, please try again.',
@@ -63,9 +63,9 @@ const signup =async  (req, res, next) => {
   let token;
   try {
     token = jwt.sign(
-      { userId: createdUser.id, email: createdUser.email },
-      'supersecret_dont_share',
-      { expiresIn: '1h' }
+      { userId: createdUser.id, email: createdUser.email }, // it will create a token storing email and user ID in it
+      'supersecret_dont_share', // this is the key which is very specific and could lead to system hack
+      { expiresIn: '1h' }// token will be expired in 1hr
     );
   } catch (err) {
     const error = new HttpError(
@@ -74,18 +74,20 @@ const signup =async  (req, res, next) => {
     );
     return next(error);
   }
-  res.status(201).json({user: createdUser.toObject({ getters: true }),token: token});
-};
+  res.status(201).json({user: createdUser.toObject({ getters: true }),token: token}); // returns the object of created user and token
+};// getters: true will send response object ID as 'id' instead of '_id' which mongoDB created automatically
+
+// this fetch the Prescriptions for the particular user
 
 const addallergy =async  (req, res, next) => {
-  const errors = validationResult(req);
+  const errors = validationResult(req);// this will validate the checks we put on user router file for the entries not to be empty.
   if (!errors.isEmpty()) {
     throw new HttpError('Invalid inputs passed, please check your data.', 422);
   }
   const { from, reaction, creator } = req.body;
 
 
-  const createdAllergy =new Allergy ({
+  const createdAllergy =new Allergy ({ // create a template for the database to store
     from, 
     reaction,
     creator
@@ -93,7 +95,7 @@ const addallergy =async  (req, res, next) => {
   let patientId;
 
   try {
-    patientId = await User.findOne({ email:creator  })
+    patientId = await User.findOne({ email:creator  }) // find a user in database
   } catch (err) {
     const error = new HttpError(
       'Logging in failed, please try again later.',
@@ -109,10 +111,11 @@ const addallergy =async  (req, res, next) => {
 
 
   try {
-    const sess = await mongoose.startSession();
-     sess.startTransaction()
-    await createdAllergy.save();
-    patientId.allergy.push(createdAllergy);
+    const sess = await mongoose.startSession();// start a session
+     sess.startTransaction()// to transport data to database with condition the things inside 
+                            //start transaction and commit transaction either all tasks will be executed or none will.
+    await createdAllergy.save();// save the data in database by this line
+    patientId.allergy.push(createdAllergy); // push in the array in user entry in database
     await patientId.save({ session: sess }); 
     await sess.commitTransaction();
   } catch (err) {
@@ -124,7 +127,9 @@ const addallergy =async  (req, res, next) => {
   }
 
   res.status(201).json({allergy: createdAllergy.toObject({ getters: true })});
-};
+};// getters: true will send response object ID as 'id' instead of '_id' which mongoDB created automatically
+
+// this fetch the Prescriptions for the particular user
 
 const addDoctors =async  (req, res, next) => {
 
@@ -154,7 +159,7 @@ const addDoctors =async  (req, res, next) => {
 
   let docId;
   try {
-    docId = await Doctor.findOne({ email:doctor })
+    docId = await Doctor.findOne({ email:doctor }) // find the data in database
   } catch (err) {
     const error = new HttpError(
       'Logging in failed, please try again later.',
@@ -171,7 +176,8 @@ const addDoctors =async  (req, res, next) => {
   
   try {
     const sess = await mongoose.startSession();
-     sess.startTransaction()
+     sess.startTransaction()// to transport data to database with condition the things inside 
+                          //start transaction and commit transaction either all tasks will be executed or none will.
      await createdCombo.save({ session: sess }); 
     await sess.commitTransaction();
   } catch (err) {
@@ -194,7 +200,7 @@ const Appointment =async  (req, res, next) => {
 var patName = name;
 
 
-var transporter = nodemailer.createTransport({
+var transporter = nodemailer.createTransport({ // it will provide the mail id password from the the site has to send mails whenever required.
     service: 'gmail',
     auth: {
       user: 'meditech.atyourhelp@gmail.com',
@@ -202,7 +208,7 @@ var transporter = nodemailer.createTransport({
     }
   });
   
-  var mailOptions = {
+  var mailOptions = { // this will set the content of the mail which the nodemailer will send.
     from: 'meditech.atyourhelp@gmail.com',
     to: docEmail,
     subject: 'Book an appointment',
@@ -211,7 +217,7 @@ var transporter = nodemailer.createTransport({
             <p>Regards MediTech</p>`
   };
   
-  transporter.sendMail(mailOptions, function(error, info){
+  transporter.sendMail(mailOptions, function(error, info){ // it will trigger and a mail will be sent to the id provided by user 
     if (error) {
       console.log(error);
     } else {
@@ -228,7 +234,7 @@ const login =async  (req, res, next) => {
   let existingUser;
 
   try {
-    existingUser = await User.findOne({ email: email })
+    existingUser = await User.findOne({ email: email }) // find the entry in database
   } catch (err) {
     const error = new HttpError(
       'Logging in failed, please try again later.',
@@ -247,7 +253,7 @@ const login =async  (req, res, next) => {
 
   let isValidPassword= false;
   try {
-  isValidPassword= await bcrypt.compare(password,existingUser.password)
+  isValidPassword= await bcrypt.compare(password,existingUser.password) // will conpare the password you entered and which is saved hashed in database.
   }
   catch(err)
   {
@@ -261,9 +267,9 @@ const login =async  (req, res, next) => {
   let token;
   try {
     token = jwt.sign(
-      { userId: existingUser.id, email: existingUser.email },
-      'supersecret_dont_share',
-      { expiresIn: '1h' }
+      { userId: existingUser.id, email: existingUser.email }, // it will create a token using ur user ID and email.
+      'supersecret_dont_share',// this is the key which is very specific and could lead to system hack
+      { expiresIn: '1h' } // token will be expired in 1hr
     );
   } catch (err) {
     const error = new HttpError(
@@ -275,9 +281,12 @@ const login =async  (req, res, next) => {
 
   res.json({message: 'Logged in!',
   user: existingUser.toObject({getters: true}),
-  token:token});
+  token:token});// getters: true will send response object ID as 'id' instead of '_id' which mongoDB created automatically
+
+  // this fetch the Prescriptions for the particular user
 };
 
+// and finally export all files.
 exports.addDoctors=addDoctors;
 exports.addallergy=addallergy;
 exports.signup = signup;

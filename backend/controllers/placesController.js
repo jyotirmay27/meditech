@@ -9,11 +9,14 @@ const Vital= require('../models/Vitals');
 const Allergy=require('../models/Allergy');
 const Combo = require('../models/Combo');
 const Doctor = require('../models/Doctors');
+
+
+// this fetch the vitals for the particular user
 const getAllVitals = async(req,res,next) =>{
-    const userId=req.params.uid;
+    const userId=req.params.uid;  // this will bind the user Id from url to a constant
     let vitall;
     try {
-        vitall = await Vital.find({ creator: userId});
+        vitall = await Vital.find({ creator: userId}); // this will search the user ID in vitals database
     } catch (err) {
       const error = new HttpError(
         'Fetching users failed, please try again later.',
@@ -21,9 +24,10 @@ const getAllVitals = async(req,res,next) =>{
       );
       return next(error);
     }
-    res.json({vitals: vitall.map(v => v.toObject({ getters: true }))});
-  };
+    res.json({vitals: vitall.map(v => v.toObject({ getters: true }))}); // this will send the searched vitals or will send empty array
+  };// getters: true will send response object ID as 'id' instead of '_id' which mongoDB created automatically
 
+  // this fetch the medicines for the particular user
   const getAllMedicines = async(req,res,next) => {
     const emailId=req.params.uid;
     
@@ -31,7 +35,7 @@ const getAllVitals = async(req,res,next) =>{
     let allmeds;
     try {
         
-        allmeds = await Medication.find({ patID: emailId});
+        allmeds = await Medication.find({ patID: emailId});// this will search the user ID in medications database
     } catch (err) {
       const error = new HttpError(
         'Fetching users failed, please try again later.',
@@ -39,19 +43,18 @@ const getAllVitals = async(req,res,next) =>{
       );
       return next(error);
     }
-    console.log(allmeds);
 
     res.json({Medicines: allmeds.map(m => m.toObject({ getters: true }))});
-  
+  // getters: true will send response object ID as 'id' instead of '_id' which mongoDB created automatically
   };
 
  
-    
+     // this fetch the Allergy for the particular user
  const getAllAllergy = async(req,res,next) => {
     const emailId=req.params.uid;
   let allergy;
   try {
-    allergy = await Allergy.find({ creator: emailId});
+    allergy = await Allergy.find({ creator: emailId});// this will search the user ID in allergies database
   } catch (err) {
     const error = new HttpError(
       'Fetching users failed, please try again later.',
@@ -59,9 +62,10 @@ const getAllVitals = async(req,res,next) =>{
     );
     return next(error);
   }
-  res.json({allergies: allergy.map(a => a.toObject({ getters: true }))});
-};
+  res.json({allergies: allergy.map(a => a.toObject({ getters: true }))});// this will send the searched allergies or will send empty array
+}; // getters: true will send response object ID as 'id' instead of '_id' which mongoDB created automatically
 
+// this fetch the Prescriptions for the particular user
   const getAllPrescriptions = async(req,res,next) =>{
     const emailId=req.params.uid;
    
@@ -78,13 +82,15 @@ const getAllVitals = async(req,res,next) =>{
     }
     res.json({Prescriptions: allpres.map(pres => pres.toObject({ getters: true }))});
   };
+
+  // it will search all prescriptions by doctors for doctors portal
   const getAllDocPrescriptions = async(req,res,next) =>{
     const emailId=req.params.did;
    
 
     let allpres;
     try {
-        allpres = await Prescription.find({ docID: emailId});
+        allpres = await Prescription.find({ docID: emailId}); // this will search the doctor ID in database
     } catch (err) {
       const error = new HttpError(
         'Fetching users failed, please try again later.',
@@ -95,6 +101,7 @@ const getAllVitals = async(req,res,next) =>{
     res.json({Prescriptions: allpres.map(pres => pres.toObject({ getters: true }))});
   };
 
+  // this will give you all doctors 
   const getYourDoctors = async(req,res,next) =>{
     const emailId=req.params.uid;
    
@@ -112,11 +119,15 @@ const getAllVitals = async(req,res,next) =>{
     res.json({User: user.map(pres => pres.toObject({ getters: true }))});
   };
 
+/* Earlier plan of the website was to show cards for vitals, after clicking on the card the particular quantities 
+graph will be shown but some twicks in plan resulted in directly showing instead of cards first. So for now this
+router is useless for this application but later addition subtraction can be done to make changs in the application
+using it . */
 const getVitalbyId = async(req,res,next) =>{
     const vitalId=req.params.vid;
     let vitals;
     try {
-        vitals = await Vital.findById( vitalId );
+        vitals = await Vital.findById( vitalId );// this will search the particular vital in database
     } catch (err) {
       const error = new HttpError(
         'Fetching places failed, please try again later',
@@ -139,7 +150,7 @@ const getVitalbyId = async(req,res,next) =>{
         const presId = req.params.pid;
         let pres;
         try {
-            pres = await Prescription.findById(presId);
+            pres = await Prescription.findById(presId);// this will search the particular prescription in database
         } catch (err) {
           const error = new HttpError(
             'Fetching places failed, please try again later',
@@ -158,12 +169,15 @@ const getVitalbyId = async(req,res,next) =>{
       };
 
 
-
+/* Earlier plan of the website was to show cards for medicines, after clicking on the card the particular quantities 
+medicine will be shown but some twicks in plan resulted in directly showing instead of cards first. So for now this
+router is useless for this application but later addition subtraction can be done to make changs in the application
+using it . */
     const getMedicinesById =async(req,res,next)=>{
         const MedId=req.params.mid;
         let med ;
         try {
-            med  = await Prescription.findById(MedId);
+            med  = await Prescription.findById(MedId);// this will search the particular medicine in database
         } catch (err) {
           const error = new HttpError(
             'Fetching places failed, please try again later',
@@ -181,7 +195,7 @@ const getVitalbyId = async(req,res,next) =>{
         res.json({ prescription: med.toObject({ getters: true }) });
       };
   
-
+// this functin will store the vital entries entered by the user
     const createVitals =async  (req, res,next)=>{
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -190,9 +204,9 @@ const getVitalbyId = async(req,res,next) =>{
           );
         }
 
-        const { sugar,BPS,BPD,pulse,temperature,date,weight,height,creator} = req.body;
+        const { sugar,BPS,BPD,pulse,temperature,date,weight,height,creator} = req.body; // this will get json data from the form filled in frontend
 
-        const createdVitals =new Vital({
+        const createdVitals =new Vital({ // this will trigger Vital schema to form a template to enter in database
     
             sugar,
             BPS,
@@ -207,7 +221,7 @@ const getVitalbyId = async(req,res,next) =>{
 
         let user;
         try {
-            user = await User.find({email : creator});
+            user = await User.find({email : creator});// this will search the user ID in database
         } catch (err) {
           const error = new HttpError(
             'Creating place failed, please try again.',
@@ -220,13 +234,13 @@ const getVitalbyId = async(req,res,next) =>{
           const error = new HttpError('Could not find user for provided id.', 404);
           return next(error);
         }
-        console.log(createdVitals);
-        console.log(user);
+        
       
         try {
             
-            const sess = await mongoose.startSession();
-            sess.startTransaction();
+            const sess = await mongoose.startSession(); // start a session 
+            sess.startTransaction(); // to transport data to database with condition the things inside 
+                                      //start transaction and commit transaction either all tasks will be executed or none will.
           await createdVitals.save({ session: sess }); 
         
           await sess.commitTransaction();
@@ -243,8 +257,8 @@ const getVitalbyId = async(req,res,next) =>{
     const createPrescription = async (req,res,next) =>{
         
  
-          const { age, patname,date , hospitalname,note,doze,meds,docID,patID } = req.body;
-          const createPrescriptions= new Prescription({
+          const { age, patname,date , hospitalname,note,doze,meds,docID,patID } = req.body;// this will get json data from the form filled in frontend
+          const createPrescriptions= new Prescription({  // this will trigger prescription schema to form a template to enter in database
          
             age,
              patname,
@@ -256,7 +270,7 @@ const getVitalbyId = async(req,res,next) =>{
               docID,
               patID
           });
-          const createMedication =new Medication({
+          const createMedication =new Medication({  // this will trigger medication schema to form a template to enter in database
       
               meds, 
               date,           
@@ -267,7 +281,7 @@ const getVitalbyId = async(req,res,next) =>{
           let patientId;
 
           try {
-            patientId = await User.findOne({ email:patID  })
+            patientId = await User.findOne({ email:patID  })// this will search the user ID in database
           } catch (err) {
             const error = new HttpError(
               'Logging in failed, please try again later.',
@@ -299,8 +313,8 @@ const getVitalbyId = async(req,res,next) =>{
           console.log(doc);
         
           try {
-            const sess = await mongoose.startSession();
-            sess.startTransaction()
+            const sess = await mongoose.startSession();// to transport data to database with condition the things inside 
+            sess.startTransaction()// this will trigger prescription schema to form a template to enter in database
             await createPrescriptions.save({ session: sess }); 
             await createMedication.save({ session: sess });
             //doc.prescriptions.push(createPrescriptions); 
@@ -321,7 +335,7 @@ const getVitalbyId = async(req,res,next) =>{
 
     };
 
-
+// this function is not of use for this application as delete functionality is not a part of this applicaton but an be later added.
 const deleteVital =async (req, res, next) => {
   const vitalId = req.params.vid;
   
@@ -349,7 +363,7 @@ const deleteVital =async (req, res, next) => {
   try {
     const sess = await mongoose.startSession();
     sess.startTransaction();
-    await vital.remove({session: sess});
+    await vital.remove({session: sess}); // this will simply delete the entry in the database
     patient.vitals.pull(place);
     await patient.save({session: sess});
     await sess.commitTransaction();
@@ -367,6 +381,7 @@ const deleteVital =async (req, res, next) => {
 };
 
 
+// at last all files are exported.
 
 exports.createVitals = createVitals;
 exports.deleteVital = deleteVital;

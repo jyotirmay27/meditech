@@ -16,11 +16,7 @@ export const Footer = () => {
                     
                     <font className="FooterMissionText">
                         {" "}
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Dolor nam eveniet fugit delectus. Voluptatibus
-                        voluptas pariatur incidunt repellat molestiae,
-                        doloremque in dignissimos laboriosam dolorem ipsam.
-                        Ullam voluptates quod praesentium at!
+                        Everybody wants to remain healthy and keep track of their health, yet nobody wants to do the cumbersome task of managing the records. We have come to your rescue. We have the account of all the doctors, your complete medical history, and your daily vitals depicted as interactive graphs so that tracking your health is now a child's play.
                     </font>
                     <br/>
                     <br/>
