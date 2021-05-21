@@ -154,7 +154,7 @@ if (token) {
   routes = (
     <Switch>
     <Route path="/home" exact>
-    <Profile />
+    <Profile  />
     </Route>
     <Route path="/vitals" exact>
       <Vitals />

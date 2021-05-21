@@ -1,0 +1,147 @@
+.FPMainDiv {
+    background-color: #d8e3e7;
+}
+
+#icon {
+    border-radius: 50%;
+    padding-left: auto;
+    padding-right: auto;
+    padding-top: 17%;
+    padding-bottom: 15%;
+    width: 10rem;
+    height: 10rem;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-image: linear-gradient(to bottom, #2883d2, #00daff);
+}
+.FPIconText {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    color: #2883d2;
+    font-size: 30px;
+}
+.FPMainCard {
+    width: 90%;
+    height: 100%;
+    padding: 25px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 15px;
+    border-color: #d8e3e7;
+    background-color: #d8e3e7;
+}
+.FPNumberingCards {
+    padding: 1rem;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+.FPAboutUs {
+    background-color: #ffffff;
+    padding: 3rem;
+    padding-left: 7rem;
+    /* text-align: center; */
+    height: 100%;
+}
+.FPAboutUsImage {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.FPAboutUsHeading {
+    /* font-family: "Open Sans", sans-serif; */
+    font-family: "Ubuntu", sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+}
+hr.AboutUs {
+    width: 20%;
+    /* margin-left: 30%; */
+    margin-right: 80%;
+    height: 5px;
+    background-image: linear-gradient(to right, #2883d2, #00daff);
+
+    /* background-color: #2883d2; */
+    /* opcaity: 0.5; */
+}
+.FPAboutUsText {
+    font-family: "Montserrat", sans-serif;
+}
+.FPFeatures {
+    background-image: linear-gradient(to right, #2883d2, #00daff);
+    height: 100%;
+}
+.FPFeaturesHeading {
+    font-family: "Open Sans", sans-serif;
+    text-align: center;
+    padding-top: 3rem;
+    font-size: 50px;
+    font-weight: 700;
+    color: white;
+}
+hr.Features {
+    width: 10%;
+    height: 5px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.FPFeaturesCard {
+    padding: 4rem;
+}
+.FPFeaturesColumm {
+    text-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+#iconFeatures {
+    border-radius: 50%;
+    padding-left: auto;
+    padding-right: auto;
+    padding-top: 13%;
+    padding-bottom: 15%;
+    width: 10rem;
+    height: 10rem;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-image: linear-gradient(to right, #2883d2, #00daff);
+}
+.FPFeaturesText {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    padding-top: 4rem;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+.imgcarousel{
+    height: 93vh;
+}
+@media screen and (max-width : 768px) {
+    .carousel{
+        height:30vh ;
+    }
+    .imgcarousel{
+        height: 30vh;
+    }
+    .FPIconText {
+        font-size: 2.8vh;
+    }
+    #icon {
+        height: 14.5vh;
+        width: 14.5vh;
+    }
+    .FPAboutUs {
+        padding-left: 5vh;
+    }
+    .FPFeaturesHeading {
+        font-size: 5vh;
+    }
+    #iconFeatures{
+        width: 14.5vh;
+    height: 14.5vh;
+
+    }
+    .FPFeaturesText {
+        font-size: 2.5vh;
+        margin-bottom: 2vh;
+    }
+} 

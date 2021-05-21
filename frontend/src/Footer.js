@@ -3,53 +3,53 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { CardDeck } from "react-bootstrap";
+import "./css/Footer.css";
 
-export const Footer = () => {
+export const Footer = () => { 
     return (
-        <Card
-            style={{
-                padding: "10px",
-                backgroundColor: "#011631",
-                width: "99.75%",
-            }}
-        >
-            <CardDeck style={{ padding: "0px" }}>
-                <Card
-                    style={{
-                        padding: "10px",
-                        backgroundColor: "#011631",
-                        color: "White",
-                        textAlign: "center",
-                        fontSize: "3rem",
-                        fontFamily: "Bahnschrift SemiBold",
-                        width: "30%",
-                    }}
-                >
-                    CodeKar
-                </Card>
-                <Card
-                    style={{
-                        padding: "0px",
-                        backgroundColor: "#011631",
-                        textAlign: "center",
-                        color: "White",
-                        width: "30%",
-                    }}
-                >
-                    <h4>Our Team</h4> {/* <small> */}
-                    <Card.Footer>
-                        <Row>
-                            <Col sm={5}>Jyotirmay Jain</Col>
-                            <Col sm={5}>Parth Mittal</Col>
+        <div className="FooterBody">
+            <Row>
+                <Col sm={1}> </Col>
+                <Col sm={5}>
+                    <font className="FooterMissionHeading"> Our Mission </font>
+                    <hr className="Mission" />
+                    
+                    <font className="FooterMissionText">
+                        {" "}
+                        Lorem ipsum dolor sit amet consectetur, adipisicing
+                        elit. Dolor nam eveniet fugit delectus. Voluptatibus
+                        voluptas pariatur incidunt repellat molestiae,
+                        doloremque in dignissimos laboriosam dolorem ipsam.
+                        Ullam voluptates quod praesentium at!
+                    </font>
+                    <br/>
+                    <br/>
+                </Col>
+                <Col sm={2}></Col>
+                <Col sm={3}>
+                    <font className="FooterTeamHeading"> Team CodeKar </font>
+                    <hr className="Team" />
+                    
+                    <font className="FooterTeamText">
+                        Jyotirmay Jain
+                        <br />
+                        Parth Mittal
+                        <br />
+                        Abhinav Goel
+                        <br />
+                        Varnika Hotwani
+                        {/* <Row>
+                            <Col sm={6}>Jyotirmay Jain</Col>
+                            <Col sm={6}>Parth Mittal</Col>
                         </Row>
                         <Row>
-                            <Col sm={5}>Abhinav Goel</Col>
-                            <Col sm={5}>Varnika Hotwani</Col>
-                        </Row>
-                    </Card.Footer>
-                    {/* </small> */}
-                </Card>
-            </CardDeck>
-        </Card>
+                            <Col sm={6}>Abhinav Goel</Col>
+                            <Col sm={6}>Varnika Hotwani</Col>
+                        </Row> */}
+                    </font>
+                </Col>
+                <Col sm={1}> </Col>
+            </Row>
+        </div>
     );
 };

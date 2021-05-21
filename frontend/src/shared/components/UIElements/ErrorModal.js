@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Modal from './Modal';
-import Button from './Button';
+import Button from '../UIElements/Button';
 
 const ErrorModal = props => {
   return (

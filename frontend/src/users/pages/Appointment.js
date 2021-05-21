@@ -51,7 +51,7 @@ const Appointment = () => {
 
 return (
     <React.Fragment>
-             <Alert style={{maxWidth:"50%" , marginLeft:"auto", marginRight:"auto"}} show={show} variant="success">
+             <Alert style={{margin:"0px", marginLeft:"auto", marginRight:"auto"}} show={show} variant="success">
      <Alert.Heading>How's it going?!</Alert.Heading>
      <p>
        The Appointment Mail has been sent to the Doctor, Wait for his/her revert.

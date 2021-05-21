@@ -28,9 +28,13 @@ router.get('/users/:uid/yourdoctors', placesControllers.getYourDoctors);
 
 router.post('/vitals',[
     check('sugar').not().isEmpty(),
-    check('BP').not().isEmpty(),
+    check('BPS').not().isEmpty(),
+    check('BPD').not().isEmpty(),
     check('pulse').not().isEmpty(),
-    check('date').not().isEmpty()] ,
+    check('temperature').not().isEmpty(),
+    check('date').not().isEmpty(),
+    check('weight').not().isEmpty(),
+    check('height').not().isEmpty()] ,
      placesControllers.createVitals);
 
 router.post('/prescription', placesControllers.createPrescription);

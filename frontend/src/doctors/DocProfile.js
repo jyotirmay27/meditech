@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import Image from 'react-bootstrap/Image';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
@@ -10,14 +10,17 @@ import ImageTest from "../jj.jpg";
 import { CardDeck, CardGroup } from "react-bootstrap";
 import DocPatients from './docPatients';
 import DocPrescription from './docPrescription';
+import { AuthContext } from '../shared/util/AuthContext';
 
 import { Link } from 'react-router-dom';
+import "../css/Profile.css";
 
 
 
 const DocProfile = () => {
-   
+    const auth = useContext(AuthContext);
     return (  
+        <div className="BGGradProfile">
         <div
             style={{
                 marginLeft: "2rem",
@@ -32,22 +35,18 @@ const DocProfile = () => {
                         borderRight: "1px solid rgba(0, 0, 0, 0.5)",
                     }}
                 >
-                    <Card style={{ width: "100%" }}>
-                        <Image
-                            variant="top"
-                            src={ImageTest}
-                            style={{
-                                height: "20vw",
-                                width: "20vw",
-                                marginLeft: "auto",
-                                marginTop: "0.5rem",
-                                marginRight: "auto",
-                            }}
-                            roundedCircle
-                        />
+                    <Card className="ProfileCard">
+                       
+                       <br />
+                        <br />
+                        <font className="ProfiledCardText">
+                            <i class="fas fa-user fa-9x"> </i>{" "}
+                        </font>
+
+                        <br />
+                        <br />
                         <Card.Body>
-                            <Card.Title>Doc Name</Card.Title>
-                            <Card.Text>All Important Information</Card.Text>
+                        <Card.Text className="ProfileCardTextInfo">{auth.userId}</Card.Text>
                         </Card.Body>
                     </Card>
                 </Col>
@@ -58,6 +57,11 @@ const DocProfile = () => {
                     <Tabs
                         defaultActiveKey="home"
                         id="uncontrolled-tab-example"
+                        style={{
+                            fontFamily: "Montserrat, sans-serif",
+                            fontWeight: "600",
+                            color: "red",
+                        }}
                     >
                         <Tab eventKey="home" title="Prescriptions">
                             
@@ -74,6 +78,7 @@ const DocProfile = () => {
                     </Tabs>
                 </Col>
             </Row>
+            </div>{" "}
         </div>
     );
 };

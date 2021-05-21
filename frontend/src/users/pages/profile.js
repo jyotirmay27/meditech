@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import Image from 'react-bootstrap/Image';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
@@ -15,6 +15,7 @@ import UserVitals from './userVitals';
 import UserAllergy  from './userAllergy';
 import UserDoctors from './userDoctors';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../shared/util/AuthContext';
 import "../../css/Profile.css";
 let items = [];
 for (let i = 0; i < 20; i++) {
@@ -22,7 +23,7 @@ for (let i = 0; i < 20; i++) {
 }
 
 const Profile = () => {
-   
+    const auth = useContext(AuthContext);
     return (  
         <div className="BGGradProfile">
             <div
@@ -51,8 +52,8 @@ const Profile = () => {
                             <br />
                             <br />
                         <Card.Body>
-                            <Card.Title className="ProfileCardTextTitle">Name</Card.Title>
-                            <Card.Text className="ProfileCardTextInfo">All Important Information</Card.Text>
+                            
+                            <Card.Text className="ProfileCardTextInfo">{auth.userId}</Card.Text>
                         </Card.Body>
                     </Card>
                 </Col>

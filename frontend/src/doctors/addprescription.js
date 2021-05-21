@@ -13,6 +13,7 @@ import Table from "react-bootstrap/Table";
 import {AuthContext} from '../shared/util/AuthContext';
 import { useHttpClient } from '../shared/hooks/useHttpClient';
 import { Footer } from '../shared/components/UIElements/Footer';
+import "../css/AddPres.css";
 const DateInputer = () => {
     const [startDate, setStartDate] = useState(new Date());
     return (

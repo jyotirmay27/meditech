@@ -7,6 +7,21 @@
         #2883d2
     );
     min-height: 90vh;
+    
+}
+.BGGrad67 {
+    width: 100%;
+    background-image: linear-gradient(
+        to bottom right,
+        #2883d2,
+        #00daff,
+        #2883d2
+    );
+    min-height: 30vh;
+    
+}
+.right{
+    text-align: right;
 }
 .TopMargin {
     height: 3rem;
@@ -37,4 +52,24 @@
     color: #5f939a;
     font-weight: 620;
     font-family: "Montserrat", sans-serif;
+}
+@media screen and (max-width: 768px) {
+    .BGGrad {
+        margin-top: 0;
+        padding-top: 0;
+    }
+    .MainCard{
+        width: 90vw;
+    }
+    .CardTitleFont{
+        font-size: 2rem;
+    }
+    .right{
+        text-align: center;
+    }
+    
+    .TopMargin {
+        height: 0.1px;
+        width: 0px;
+    }
 }

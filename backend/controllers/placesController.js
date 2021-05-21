@@ -30,7 +30,7 @@ const getAllVitals = async(req,res,next) =>{
 
     let allmeds;
     try {
-        console.log(emailId);
+        
         allmeds = await Medication.find({ patID: emailId});
     } catch (err) {
       const error = new HttpError(
@@ -190,14 +190,18 @@ const getVitalbyId = async(req,res,next) =>{
           );
         }
 
-        const { sugar,BP,pulse,date,creator} = req.body;
+        const { sugar,BPS,BPD,pulse,temperature,date,weight,height,creator} = req.body;
 
         const createdVitals =new Vital({
     
             sugar,
-            BP,
+            BPS,
+            BPD,
             pulse,
+            temperature,
             date,
+            weight,
+            height,
             creator 
         });
 

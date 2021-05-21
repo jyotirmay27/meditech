@@ -1,26 +1,24 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Akira from "../jj.jpg";
+import "../css/DoctorListCard.css";
 
- const AllergyCard = props => {
+
+const AllergyCard = (props) => {
     return (
         <div>
-            <Card
-                style={{
-                    width: "18rem",
-                    marginLeft: "0.8rem",
-                    marginRight: "0.8rem",
-                    marginTop: "0.8rem",
-                }}
-            >
-                <Card.Img variant="top" src={Akira} />
+            <Card border="info" className="DoctorListCards">
+                <br />
+                <font className="DoctorIcon">
+                    <i className="fas fa-bacteria fa-9x"></i>
+                </font>
                 <Card.Body>
-                    <Card.Title>Allergy</Card.Title>
+                    <Card.Title style={{ fontSize: "2rem", color: "#195a65" }}>
+                        Allergy
+                    </Card.Title>
                     <Card.Text>
-                       Substance: {props.from}
+                        Substance: {props.from}
                         Reaction:{props.reaction}
-                     
-
                     </Card.Text>
                 </Card.Body>
             </Card>

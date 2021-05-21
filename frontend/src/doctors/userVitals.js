@@ -5,6 +5,7 @@ import ErrorModal from '../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../shared/components/UIElements/LoadingSpinner';
 import VitalList from './vitalsList';
 import { AuthContext } from '../shared/util/AuthContext';
+import '../css/pat.css';
 const PatientVitals = () =>{
     const auth = useContext(AuthContext);
 const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -35,8 +36,10 @@ useEffect(()=> {
 return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
+      <div className="BGGradient">
      {isLoading && (<div className="center">  <LoadingSpinner  /></div>)}
   {!isLoading &&loadedvital && <VitalList items={loadedvital}  />}
+  </div>
   </React.Fragment>
   );
   

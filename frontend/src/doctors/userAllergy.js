@@ -31,9 +31,12 @@ useEffect(()=> {
 
 return (
     <React.Fragment>
+      
       <ErrorModal error={error} onClear={clearError} />
+      <div className="BGGradient">
      {isLoading && (<div className="center">  <LoadingSpinner  /></div>)}
   {!isLoading &&loadedAllergy && <AllergyList items={loadedAllergy}  />}
+  </div>
   </React.Fragment>
   );
   

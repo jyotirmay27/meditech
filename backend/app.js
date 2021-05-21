@@ -11,8 +11,10 @@ const placesRoutes=require('./routes/placesRoutes');
 
 const app = express();
 
+// bodyparser is used to parse the body to make connection smoother
 app.use(bodyParser.json());
 
+// headers ar set to make transfer of JSON data from frontend to backend even in different ports like 3000 and 5000
 app.use((req,res,next)=>{
 
     res.setHeader('Access-Control-Allow-Origin','*');
@@ -21,14 +23,16 @@ app.use((req,res,next)=>{
     next();
 });
 
-
+// will redirect all users logged in with doctor's portal
 app.use('/api/doctors',doctorRoutes);
 
-console.log("unknow error");
+// will redirect all users logged in with user's portal
 app.use('/api/users', usersRoutes);
 
+// will redirect all doctors and users to diiferent diiferent places in website accordingly
 app.use('/api/places', placesRoutes);
 
+// error message is thrown if the route user want to access is not present
 app.use((req,res,next)=>{ 
     const error = new HttpError('Could not find this shit' , 404);
     throw error;
@@ -36,6 +40,7 @@ app.use((req,res,next)=>{
 }
 );
 
+//sends the error if present
 app.use((error,req,res,next)=> {
     if(res.headerSent)
     {
@@ -47,6 +52,7 @@ app.use((error,req,res,next)=> {
 
 });
 
+// it will connect the node server with mongoDB database
 mongoose
 .connect('mongodb+srv://jyotirmay:jyotirmay27@cluster0.8su5b.mongodb.net/meditech?retryWrites=true&w=majority')
 .then(()=> {

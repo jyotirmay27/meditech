@@ -6,10 +6,15 @@ import { useHttpClient } from '../shared/hooks/useHttpClient';
 import { Link } from 'react-router-dom';
 import "../css/Login.css";
 import InputGroup from "react-bootstrap/InputGroup";
+import { useHistory } from 'react-router-dom';
+import Alert from 'react-bootstrap/Alert';
 
 
 const DoctorLogin =() =>{
+
+    
   const auth = useContext(AuthContext);
+  const history = useHistory();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const onFormSubmit =async e => {
     e.preventDefault();
@@ -33,7 +38,26 @@ const DoctorLogin =() =>{
   }catch (err) {}
 };
 
+const routeChange= () =>{ 
 
+    history.push('/');
+  };
+if(error)
+{
+return (
+<Alert style={{ margin:"0px", zIndex:"100" ,marginLeft:"auto", marginRight:"auto"}}  variant="danger">
+<Alert.Heading>Login Error</Alert.Heading>
+<p>
+{error}
+</p>
+<hr />
+<div className="d-flex justify-content-end">
+<Button onClick={routeChange} variant="outline-danger">
+Try again
+</Button>
+</div>
+</Alert>)
+}
 
   return (
     <div className="BGGrad">

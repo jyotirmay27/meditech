@@ -4,11 +4,13 @@ import { Card, Button, Form,Row, InputGroup} from "react-bootstrap";
 import ImageTest from "../../jj.jpg";
 import { AuthContext } from '../../shared/util/AuthContext';
 import { useHttpClient } from '../../shared/hooks/useHttpClient';
-
+import { useHistory } from 'react-router-dom';
+import Alert from 'react-bootstrap/Alert';
 function Signup() {
 
 
   const auth = useContext(AuthContext);
+  const history = useHistory();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const onFormSubmit =async e => {
 
@@ -37,6 +39,26 @@ function Signup() {
     } catch (err) {}
  
   }
+  const routeChange= () =>{ 
+
+    history.push('/');
+  };
+if(error)
+{
+return (
+<Alert style={{ margin:"0px", zIndex:"100" ,marginLeft:"auto", marginRight:"auto"}}  variant="danger">
+<Alert.Heading>Login Error</Alert.Heading>
+<p>
+{error}
+</p>
+<hr />
+<div className="d-flex justify-content-end">
+<Button onClick={routeChange} variant="outline-danger">
+Try again
+</Button>
+</div>
+</Alert>)
+}
 
   return (
     <div className="BGGrad">

@@ -16,16 +16,24 @@ const Vitals = () => {
      var date = document.getElementById('date'). value;
      var pulse = document.getElementById('pulse').value;
      var sugar = document.getElementById('sugar'). value;
-     var BP = document.getElementById('BP').value;
+     var BPS = document.getElementById('BPS').value;
+     var BPD = document.getElementById('BPD').value;
+     var temperature = document.getElementById('temperature').value;
+     var weight = document.getElementById('weight').value;
+     var height = document.getElementById('height').value;
     try {
         await sendRequest(
             'http://localhost:5000/api/places/vitals',
             'POST', 
             JSON.stringify({
                sugar:sugar, 
-               BP: BP,
+               BPS: BPS,
+               BPD:BPD,
                pulse:pulse,
+               temperature: temperature,
                date: date,
+               weight:weight,
+               height:height,
                creator: auth.userId
             }),
      { 'Content-Type': 'application/json' }
@@ -37,7 +45,7 @@ const Vitals = () => {
 
 
 return (
-  <div className="BGGradeAllergy">
+  <div  className="BGGradeAllergy" style={{ minHeight:"160vh"}}>
   <div className="TopMarginAllergy"></div>
 
   <div className="box" id="heading">
@@ -58,12 +66,23 @@ return (
           </Form.Group>
           <Form.Group controlId="formGroupBP">
               <Form.Label className="AllergyFormTextLabel">
-                  Blood Pressure
+                  Blood Pressure Diastolic
               </Form.Label>
               <Form.Control
                   type="text"
-                  id="BP"
-                  placeholder="Blood Pressure"
+                  id="BPD"
+                  placeholder="Blood Pressure Diastolic"
+                  className="AllergyFormText"
+              />
+              </Form.Group>
+               <Form.Group controlId="formGroupBP2">
+              <Form.Label className="AllergyFormTextLabel">
+                  Blood Pressure Systolic
+              </Form.Label>
+              <Form.Control
+                  type="text"
+                  id="BPS"
+                  placeholder="Blood Pressure Systolic"
                   className="AllergyFormText"
               />
           </Form.Group>
@@ -78,6 +97,17 @@ return (
                   className="AllergyFormText"
               />
           </Form.Group>
+          <Form.Group controlId="formGroupTemperature">
+              <Form.Label className="AllergyFormTextLabel">
+                  Temperature
+              </Form.Label>
+              <Form.Control
+                  type="text"
+                  id="temperature"
+                  placeholder="Temperature"
+                  className="AllergyFormText"
+              />
+          </Form.Group>
           <Form.Group controlId="formGroupSystol">
               <Form.Label className="AllergyFormTextLabel">
                   Heart Rate
@@ -89,6 +119,28 @@ return (
                   className="AllergyFormText"
               />
           </Form.Group>
+          <Form.Group controlId="formGroupWeight">
+              <Form.Label className="AllergyFormTextLabel">
+                  Weight
+              </Form.Label>
+              <Form.Control
+                  type="text"
+                  id="weight"
+                  placeholder="Weight"
+                  className="AllergyFormText"
+              />
+              </Form.Group>
+              <Form.Group controlId="formGroupHeight">
+              <Form.Label className="AllergyFormTextLabel">
+                  Height
+              </Form.Label>
+              <Form.Control
+                  type="text"
+                  id="height"
+                  placeholder="Height"
+                  className="AllergyFormText"
+              />
+              </Form.Group>
           <br />
           <Button
               variant="primary"

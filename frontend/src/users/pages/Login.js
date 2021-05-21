@@ -6,11 +6,15 @@ import { useHttpClient } from '../../shared/hooks/useHttpClient';
 import { Link } from 'react-router-dom';
 import InputGroup from "react-bootstrap/InputGroup";
 import "../../css/Login.css";
-
-
+import ErrorModal from '../../shared/components/UIElements/ErrorModal';
+import { useHistory } from 'react-router-dom';
+import Alert from 'react-bootstrap/Alert';
 const Login =() =>{
   const auth = useContext(AuthContext);
+  const history = useHistory();
+
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
+
   const onFormSubmit =async e => {
     e.preventDefault();
     var email = document.getElementById('em'). value;
@@ -30,11 +34,35 @@ const Login =() =>{
       auth.login(responseData.user.email, responseData.token);
     document.getElementById('em'). value="";
     document.getElementById('pass'). value="";
-  }catch (err) {}
+  }catch (err) {
+   
+  }
 };
+const routeChange= () =>{ 
+
+                history.push('/');
+              };
+if(error)
+{
+  return (
+  <Alert style={{ margin:"0px", zIndex:"100" ,marginLeft:"auto", marginRight:"auto"}}  variant="danger">
+   <Alert.Heading>Login Error</Alert.Heading>
+   <p>
+     {error}
+   </p>
+   <hr />
+   <div className="d-flex justify-content-end">
+     <Button onClick={routeChange} variant="outline-danger">
+       Try again
+     </Button>
+   </div>
+ </Alert>)
+}
 
 
   return (
+    <React.Fragment>
+      
     <div className="BGGrad">
     <Row className="TopMargin"></Row>
     <Card
@@ -80,8 +108,8 @@ const Login =() =>{
                                             to="/signup"
                                             className="LinkStyle"
                                         >
-                                            {" "}
-                                            New Users?{" "}
+                                            
+                                            New Users?
                                         </Link>
                                     </Col>
                                     <Col sm={3} style={{ textAlign: "center" }}>
@@ -89,14 +117,14 @@ const Login =() =>{
                                             to="/doctor/login"
                                             className="LinkStyle"
                                         >
-                                            {" "}
-                                            Doctor?{" "}
+                                            
+                                            Doctor?
                                         </Link>
                                     </Col>
-                                    <Col sm={5} style={{ textAlign: "right" }}>
+                                    <Col sm={5} className="right">
                                         <Link to="" className="LinkStyle">
-                                            {" "}
-                                            Forgot Password?{" "}
+                                            
+                                            Forgot Password?
                                         </Link>
                                     </Col>
                                 </Row>
@@ -111,6 +139,7 @@ const Login =() =>{
       </Card.Body>
       </Card>
     </div>
+    </React.Fragment>
 
     
   );

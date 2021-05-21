@@ -3,20 +3,20 @@ import { Chart } from "react-google-charts";
  
 function chart(props){
   return(<Chart
-    width={'95%'}
-    height={'95%'}
+    width={'100%'}
+    height={'100%'}
     chartType="LineChart"
     loader={<div>Loading Chart</div>}
     data={[
       ['x', 'Normal', 'Your Value'],
-      [0, 90, 90],
-      [1, 90, props.points[0]],
-      [2, 90, props.points[1]],
-      [3, 90, props.points[2]],
-      [4, 90, props.points[3]],
-      [5, 90, props.points[4]],
-      [6, 90, props.points[5]],
-      [7, 90, props.points[6]],
+      [0, props.points[8], props.points[8]],
+      [1, props.points[8],props.points[0]],
+      [2, props.points[8], props.points[1]],
+      [3, props.points[8], props.points[2]],
+      [4, props.points[8], props.points[3]],
+      [5, props.points[8], props.points[4]],
+      [6, props.points[8], props.points[5]],
+      [7, props.points[8], props.points[6]],
     ]}
     options={{
       hAxis: {
