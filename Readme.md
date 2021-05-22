@@ -9,7 +9,7 @@ https://drive.google.com/file/d/1JuM7Lz3WyOylj5ZUW5Qpgv9LzQtiSwaz/view?usp=shari
 
 ## Video
 
-[![Watch the video]<img src="assets/img/Screenshot (338).png" width="350" title="Upload">](https://www.youtube.com/watch?v=HcVd1OyeAN4&t=3s)
+[![Watch the video]<img src="screenshots/first.png" width="350" title="Upload">](https://youtu.be/6txQyExxo3Y)
 
 ## Tech Stack
 
