@@ -3,6 +3,8 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import MedicalBG from "./Meditech.png";
 import PageBG from "./Meditech.png";
+import PageBG2 from "./Meditech FP Final-01.png";
+import PageBG3 from "./Meditech FP Final-2-01.png";
 import Row from "react-bootstrap/Row";
 import { Footer } from "./Footer";
 import Image from "react-bootstrap/Image";
@@ -29,14 +31,14 @@ export const FrontPage = () => {
                         <Carousel.Item>
                             <img
                                 className="d-block w-100 imgcarousel"
-                                src={PageBG}
+                                src={PageBG2}
                                 alt="Second slide"
                             />
                         </Carousel.Item>
                         <Carousel.Item>
                             <img
                                 className="d-block w-100 imgcarousel"
-                                src={PageBG}
+                                src={PageBG3}
                                 alt="Third slide"
                             />
                         </Carousel.Item>

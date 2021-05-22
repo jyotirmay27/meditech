@@ -3,7 +3,7 @@ const express = require('express');
 const  {check} = require('express-validator')
 
 const placesControllers = require('../controllers/placesController')
-const checkAuth = require('../middleware/check-auth');
+
 const router = express.Router();
 
 /* when request is made from Frontend to url http://localhost:5000/api/places/<url mentioned in get/post request>

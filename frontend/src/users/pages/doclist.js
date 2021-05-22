@@ -23,7 +23,7 @@ const DocList = props =>{
     <CardDeck>
     {props.items.map( med=> (
     <DocCard 
-    doctor={med.patient}
+    doctor={med.doctor}
     
     />))}
     </CardDeck> 
