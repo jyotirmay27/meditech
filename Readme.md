@@ -91,6 +91,7 @@ from
 
 
 ## Features
+0. Fully responsive site.
 1.  Registration on the system with Name, Operating Company, and Enterprise Email ID as mandatory fields (All are  text fields)
 2.	It will use password for the user or his doctor.
 3.	To access patient’s regular vitals like BP, Sugar etc which will be entered by user and the website will make its graph from the inception.
