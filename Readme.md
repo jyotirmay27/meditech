@@ -23,10 +23,10 @@ https://drive.google.com/file/d/1JuM7Lz3WyOylj5ZUW5Qpgv9LzQtiSwaz/view?usp=shari
 8. Bootstrap
 
 ## Contributors
-1. Jyotirmay jain
+1. Jyotirmay jain(jyotirmay27)
 2. Parth mittal
 3. Abhinav Goel
-4. Varnika hotwani
+4. Varnika hotwani(Varnika-Hotwani)
 
 
 ### Installation instructions
