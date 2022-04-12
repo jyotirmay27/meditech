@@ -22,11 +22,15 @@ https://drive.google.com/file/d/1JuM7Lz3WyOylj5ZUW5Qpgv9LzQtiSwaz/view?usp=shari
 7. HTML
 8. Bootstrap
 
-## Contributors
-1. Jyotirmay jain(jyotirmay27)
-2. Parth mittal
-3. Abhinav Goel
-4. Varnika hotwani(Varnika-Hotwani)
+  ## Contributors:
+
+Team Name: CodeKar
+
+* [Jyotirmay Jain](https://github.com/jyotirmay27)
+* [Parth Mittal](https://github.com/Parthtrap)
+* [Varnika hotwani](https://github.com/Varnika-Hotwani)
+* [Abhinav Goel](https://github.com/abhinav2401)
+
 
 
 ### Installation instructions
