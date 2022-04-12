@@ -22,6 +22,13 @@ https://drive.google.com/file/d/1JuM7Lz3WyOylj5ZUW5Qpgv9LzQtiSwaz/view?usp=shari
 7. HTML
 8. Bootstrap
 
+## Contributors
+1. Jyotirmay jain
+2. Parth mittal
+3. Abhinav Goel
+4. Varnika hotwani
+
+
 ### Installation instructions
 1. Download LTS or Current version of Node js from https://nodejs.org/en/ .
 2. In cmd type 'node' to get sure if node is present.
