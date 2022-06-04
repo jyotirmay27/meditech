@@ -2,14 +2,18 @@
 
 ## Getting Started
 
-A Health Assistance Website which will help doctors and patients to access patient’s medical history and effects.
+Everybody wants to remain healthy and keep track of their health, yet nobody wants to do the cumbersome task of
+managing the records. So, we have come to the rescue. We have the account of all the doctors, your complete
+medical history and your daily vitals depicted as interactive graphs so that tracking your health is now a child's
+play. This is a Health Assistance Website which will help doctors and patients to access patient’s medical history 
+and effects. We have used creative charts, which can be looked upon and understood easily by doctors as well as patients.
 
 ## Presentation Link
 https://drive.google.com/file/d/1JuM7Lz3WyOylj5ZUW5Qpgv9LzQtiSwaz/view?usp=sharing
 
 ## Video
 
-[![Watch the video]<img src="screenshots/first.png" width="350" title="Upload">](https://youtu.be/6txQyExxo3Y)
+[![Watch the video]<br><br><img src="screenshots/first.png" width="350" title="Upload">](https://youtu.be/6txQyExxo3Y)
 
 ## Tech Stack
 
